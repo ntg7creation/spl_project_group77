@@ -1,0 +1,3 @@
+C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/spl_ex1.dir
+C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/edit_cache.dir

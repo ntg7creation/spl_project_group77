@@ -1,0 +1,4 @@
+C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\Lenovo\CLionProjects\spl_ex1
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug
