@@ -124,6 +124,60 @@ spl_ex1\fast:
 	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\build
 .PHONY : spl_ex1\fast
 
+Customer.obj: Customer.cpp.obj
+
+.PHONY : Customer.obj
+
+# target to build an object file
+Customer.cpp.obj:
+	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\Customer.cpp.obj
+.PHONY : Customer.cpp.obj
+
+Customer.i: Customer.cpp.i
+
+.PHONY : Customer.i
+
+# target to preprocess a source file
+Customer.cpp.i:
+	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\Customer.cpp.i
+.PHONY : Customer.cpp.i
+
+Customer.s: Customer.cpp.s
+
+.PHONY : Customer.s
+
+# target to generate assembly for a file
+Customer.cpp.s:
+	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\Customer.cpp.s
+.PHONY : Customer.cpp.s
+
+Restaurant.obj: Restaurant.cpp.obj
+
+.PHONY : Restaurant.obj
+
+# target to build an object file
+Restaurant.cpp.obj:
+	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\Restaurant.cpp.obj
+.PHONY : Restaurant.cpp.obj
+
+Restaurant.i: Restaurant.cpp.i
+
+.PHONY : Restaurant.i
+
+# target to preprocess a source file
+Restaurant.cpp.i:
+	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\Restaurant.cpp.i
+.PHONY : Restaurant.cpp.i
+
+Restaurant.s: Restaurant.cpp.s
+
+.PHONY : Restaurant.s
+
+# target to generate assembly for a file
+Restaurant.cpp.s:
+	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\Restaurant.cpp.s
+.PHONY : Restaurant.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -160,6 +214,12 @@ help:
 	@echo ... rebuild_cache
 	@echo ... spl_ex1
 	@echo ... edit_cache
+	@echo ... Customer.obj
+	@echo ... Customer.i
+	@echo ... Customer.s
+	@echo ... Restaurant.obj
+	@echo ... Restaurant.i
+	@echo ... Restaurant.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

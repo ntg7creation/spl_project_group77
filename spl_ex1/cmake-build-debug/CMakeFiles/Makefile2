@@ -72,7 +72,7 @@ CMAKE_BINARY_DIR = C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\
 CMakeFiles\spl_ex1.dir\all:
 	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\depend
 	$(MAKE) -f CMakeFiles\spl_ex1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target spl_ex1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target spl_ex1"
 .PHONY : CMakeFiles\spl_ex1.dir\all
 
 # Include target in all.
@@ -82,7 +82,7 @@ all: CMakeFiles\spl_ex1.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\spl_ex1.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\CMakeFiles 4
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\spl_ex1.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles\spl_ex1.dir\rule

@@ -87,10 +87,16 @@
 		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Action.h">
 			<Option target="spl_ex1"/>
 		</Unit>
+		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.cpp">
+			<Option target="spl_ex1"/>
+		</Unit>
 		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.h">
 			<Option target="spl_ex1"/>
 		</Unit>
 		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h">
+			<Option target="spl_ex1"/>
+		</Unit>
+		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.cpp">
 			<Option target="spl_ex1"/>
 		</Unit>
 		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.h">
