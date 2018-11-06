@@ -21,7 +21,7 @@ Compilation of the C compiler identification source "CMakeCCompilerId.c" produce
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
 
-The C compiler identification is MSVC, found in "C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdC/CMakeCCompilerId.exe"
+The C compiler identification is MSVC, found in "C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdC/CMakeCCompilerId.exe"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.14.26428/bin/Hostx86/x86/cl.exe 
@@ -45,84 +45,84 @@ Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" p
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
 
-The CXX compiler identification is MSVC, found in "C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdCXX/CMakeCXXCompilerId.exe"
+The CXX compiler identification is MSVC, found in "C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdCXX/CMakeCXXCompilerId.exe"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_435f1\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_435f1.dir\build.make /nologo -L                  CMakeFiles\cmTC_435f1.dir\build
-Building C object CMakeFiles/cmTC_435f1.dir/testCCompiler.c.obj
-	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm18C2.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_7d1be\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_7d1be.dir\build.make /nologo -L                  CMakeFiles\cmTC_7d1be.dir\build
+Building C object CMakeFiles/cmTC_7d1be.dir/testCCompiler.c.obj
+	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm1BD.tmp
 testCCompiler.c
-Linking C executable cmTC_435f1.exe
-	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_435f1.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_435f1.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm1911.tmp
+Linking C executable cmTC_7d1be.exe
+	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_7d1be.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_7d1be.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm354.tmp
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_0ec18\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_0ec18.dir\build.make /nologo -L                  CMakeFiles\cmTC_0ec18.dir\build
-Building C object CMakeFiles/cmTC_0ec18.dir/CMakeCCompilerABI.c.obj
-	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm1E50.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_aad78\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_aad78.dir\build.make /nologo -L                  CMakeFiles\cmTC_aad78.dir\build
+Building C object CMakeFiles/cmTC_aad78.dir/CMakeCCompilerABI.c.obj
+	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nmB71.tmp
 CMakeCCompilerABI.c
-Linking C executable cmTC_0ec18.exe
-	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_0ec18.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_0ec18.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm1EBE.tmp
+Linking C executable cmTC_aad78.exe
+	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_aad78.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_aad78.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nmC0E.tmp
 
 
 
 
 Detecting C [] compiler features compiled with the following output:
-Change Dir: C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_0cb33\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_0cb33.dir\build.make /nologo -L                  CMakeFiles\cmTC_0cb33.dir\build
-Building C object CMakeFiles/cmTC_0cb33.dir/feature_tests.c.obj
-	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm24E7.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_79fd0\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_79fd0.dir\build.make /nologo -L                  CMakeFiles\cmTC_79fd0.dir\build
+Building C object CMakeFiles/cmTC_79fd0.dir/feature_tests.c.obj
+	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm115D.tmp
 feature_tests.c
-Linking C executable cmTC_0cb33.exe
-	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_0cb33.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_0cb33.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm2602.tmp
+Linking C executable cmTC_79fd0.exe
+	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_79fd0.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_79fd0.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm1239.tmp
 
 
     Feature record: C_FEATURE:1c_function_prototypes
     Feature record: C_FEATURE:1c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_c95ad\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_c95ad.dir\build.make /nologo -L                  CMakeFiles\cmTC_c95ad.dir\build
-Building CXX object CMakeFiles/cmTC_c95ad.dir/testCXXCompiler.cxx.obj
-	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm2AB4.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_fcc06\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_fcc06.dir\build.make /nologo -L                  CMakeFiles\cmTC_fcc06.dir\build
+Building CXX object CMakeFiles/cmTC_fcc06.dir/testCXXCompiler.cxx.obj
+	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm1804.tmp
 testCXXCompiler.cxx
-Linking CXX executable cmTC_c95ad.exe
-	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_c95ad.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_c95ad.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm2B22.tmp
+Linking CXX executable cmTC_fcc06.exe
+	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_fcc06.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_fcc06.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm1892.tmp
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_ae20d\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_ae20d.dir\build.make /nologo -L                  CMakeFiles\cmTC_ae20d.dir\build
-Building CXX object CMakeFiles/cmTC_ae20d.dir/CMakeCXXCompilerABI.cpp.obj
-	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm309F.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_297d6\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_297d6.dir\build.make /nologo -L                  CMakeFiles\cmTC_297d6.dir\build
+Building CXX object CMakeFiles/cmTC_297d6.dir/CMakeCXXCompilerABI.cpp.obj
+	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm2189.tmp
 CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_ae20d.exe
-	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_ae20d.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_ae20d.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm311D.tmp
+Linking CXX executable cmTC_297d6.exe
+	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_297d6.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_297d6.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm2350.tmp
 
 
 
 
 Detecting CXX [] compiler features compiled with the following output:
-Change Dir: C:/Users/Lenovo/CLionProjects/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_02d5e\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_02d5e.dir\build.make /nologo -L                  CMakeFiles\cmTC_02d5e.dir\build
-Building CXX object CMakeFiles/cmTC_02d5e.dir/feature_tests.cxx.obj
-	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm392B.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_b531d\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_b531d.dir\build.make /nologo -L                  CMakeFiles\cmTC_b531d.dir\build
+Building CXX object CMakeFiles/cmTC_b531d.dir/feature_tests.cxx.obj
+	C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @C:\Users\Lenovo\AppData\Local\Temp\nm3281.tmp
 feature_tests.cxx
-Linking CXX executable cmTC_02d5e.exe
-	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_02d5e.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_02d5e.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm39A9.tmp
+Linking CXX executable cmTC_b531d.exe
+	C:\Users\Lenovo\Desktop\Programing\Clion\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_b531d.dir --manifests  -- C:\PROGRA~2\MICROS~4\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_b531d.dir\objects1.rsp @C:\Users\Lenovo\AppData\Local\Temp\nm332E.tmp
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
