@@ -5,7 +5,7 @@
 #include "Table.h"
 #include "Action.h"
 
-
+//test
 Restaurant::Restaurant() : open(true), tables(), menu(), actionsLog() {}
 
 Restaurant::Restaurant(const std::string &configFilePath) {}
