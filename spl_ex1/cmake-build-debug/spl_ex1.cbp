@@ -80,28 +80,28 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Action.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Action.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.cpp">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.cpp">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Dish.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.cpp">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.cpp">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Table.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Table.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/main.cpp">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/main.cpp">
 			<Option target="spl_ex1"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/CMakeLists.txt">
