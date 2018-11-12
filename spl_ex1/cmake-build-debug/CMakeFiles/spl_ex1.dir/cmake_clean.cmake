@@ -1,11 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/spl_ex1.dir/main.cpp.obj"
-  "CMakeFiles/spl_ex1.dir/Customer.cpp.obj"
-  "CMakeFiles/spl_ex1.dir/Restaurant.cpp.obj"
+  "CMakeFiles/spl_ex1.dir/main.cpp.o"
+  "CMakeFiles/spl_ex1.dir/Customer.cpp.o"
+  "CMakeFiles/spl_ex1.dir/Restaurant.cpp.o"
   "spl_ex1.pdb"
   "spl_ex1.exe"
-  "spl_ex1.exe.manifest"
-  "spl_ex1.lib"
+  "libspl_ex1.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

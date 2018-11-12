@@ -4,111 +4,107 @@
 	<Project>
 		<Option title="spl_ex1"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="msvc8"/>
+		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="spl_ex1">
-				<Option output="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/spl_ex1.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/spl_ex1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="msvc8"/>
+				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\cppwinrt"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 spl_ex1"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 spl_ex1"/>
+					<CompileFile command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="spl_ex1/fast">
-				<Option output="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/spl_ex1.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/spl_ex1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="msvc8"/>
+				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\cppwinrt"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.3.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 spl_ex1/fast"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 spl_ex1/fast"/>
+					<CompileFile command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lenovo\Documents\GitHub\spl_project_group77\spl_ex1\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/cygwin64/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Action.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Action.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.cpp">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.cpp">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.cpp">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.cpp">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Table.h">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Table.h">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/main.cpp">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/main.cpp">
 			<Option target="spl_ex1"/>
 		</Unit>
-		<Unit filename="C:/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/CMakeLists.txt">
+		<Unit filename="/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
