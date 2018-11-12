@@ -6,29 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Action.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Action.h
 string
 -
 iostream
 -
 Customer.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.h
 
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.cpp
-
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.h
 vector
 -
 string
 -
 Dish.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Dish.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h
 
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Dish.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h
 string
 -
 
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.cpp
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.cpp
 vector
 -
 string
@@ -38,37 +36,31 @@ fstream
 sstream
 -
 Restaurant.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.h
 Dish.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Dish.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h
 Table.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Table.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Table.h
 Action.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Action.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Action.h
 
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.h
 vector
 -
 string
 -
 Dish.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Dish.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h
 Table.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Table.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Table.h
 Action.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Action.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Action.h
 
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Table.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Table.h
 vector
 -
 Customer.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.h
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.h
 Dish.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Dish.h
-
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/main.cpp
-Restaurant.h
-/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.h
-iostream
--
+/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Dish.h
 

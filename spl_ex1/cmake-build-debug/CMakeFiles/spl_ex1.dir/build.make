@@ -57,57 +57,57 @@ include CMakeFiles/spl_ex1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/spl_ex1.dir/flags.make
 
-CMakeFiles/spl_ex1.dir/files/main.cpp.o: CMakeFiles/spl_ex1.dir/flags.make
-CMakeFiles/spl_ex1.dir/files/main.cpp.o: ../files/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/spl_ex1.dir/files/main.cpp.o"
-	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/spl_ex1.dir/files/main.cpp.o -c /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/main.cpp
+CMakeFiles/spl_ex1.dir/main.cpp.o: CMakeFiles/spl_ex1.dir/flags.make
+CMakeFiles/spl_ex1.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/spl_ex1.dir/main.cpp.o"
+	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/spl_ex1.dir/main.cpp.o -c /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/main.cpp
 
-CMakeFiles/spl_ex1.dir/files/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spl_ex1.dir/files/main.cpp.i"
-	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/main.cpp > CMakeFiles/spl_ex1.dir/files/main.cpp.i
+CMakeFiles/spl_ex1.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spl_ex1.dir/main.cpp.i"
+	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/main.cpp > CMakeFiles/spl_ex1.dir/main.cpp.i
 
-CMakeFiles/spl_ex1.dir/files/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spl_ex1.dir/files/main.cpp.s"
-	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/main.cpp -o CMakeFiles/spl_ex1.dir/files/main.cpp.s
+CMakeFiles/spl_ex1.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spl_ex1.dir/main.cpp.s"
+	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/main.cpp -o CMakeFiles/spl_ex1.dir/main.cpp.s
 
-CMakeFiles/spl_ex1.dir/files/Customer.cpp.o: CMakeFiles/spl_ex1.dir/flags.make
-CMakeFiles/spl_ex1.dir/files/Customer.cpp.o: ../files/Customer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/spl_ex1.dir/files/Customer.cpp.o"
-	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/spl_ex1.dir/files/Customer.cpp.o -c /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.cpp
+CMakeFiles/spl_ex1.dir/Customer.cpp.o: CMakeFiles/spl_ex1.dir/flags.make
+CMakeFiles/spl_ex1.dir/Customer.cpp.o: ../Customer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/spl_ex1.dir/Customer.cpp.o"
+	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/spl_ex1.dir/Customer.cpp.o -c /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.cpp
 
-CMakeFiles/spl_ex1.dir/files/Customer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spl_ex1.dir/files/Customer.cpp.i"
-	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.cpp > CMakeFiles/spl_ex1.dir/files/Customer.cpp.i
+CMakeFiles/spl_ex1.dir/Customer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spl_ex1.dir/Customer.cpp.i"
+	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.cpp > CMakeFiles/spl_ex1.dir/Customer.cpp.i
 
-CMakeFiles/spl_ex1.dir/files/Customer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spl_ex1.dir/files/Customer.cpp.s"
-	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Customer.cpp -o CMakeFiles/spl_ex1.dir/files/Customer.cpp.s
+CMakeFiles/spl_ex1.dir/Customer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spl_ex1.dir/Customer.cpp.s"
+	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Customer.cpp -o CMakeFiles/spl_ex1.dir/Customer.cpp.s
 
-CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.o: CMakeFiles/spl_ex1.dir/flags.make
-CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.o: ../files/Restaurant.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.o"
-	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.o -c /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.cpp
+CMakeFiles/spl_ex1.dir/Restaurant.cpp.o: CMakeFiles/spl_ex1.dir/flags.make
+CMakeFiles/spl_ex1.dir/Restaurant.cpp.o: ../Restaurant.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/spl_ex1.dir/Restaurant.cpp.o"
+	C:/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/spl_ex1.dir/Restaurant.cpp.o -c /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.cpp
 
-CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.i"
-	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.cpp > CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.i
+CMakeFiles/spl_ex1.dir/Restaurant.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/spl_ex1.dir/Restaurant.cpp.i"
+	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.cpp > CMakeFiles/spl_ex1.dir/Restaurant.cpp.i
 
-CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.s"
-	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/files/Restaurant.cpp -o CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.s
+CMakeFiles/spl_ex1.dir/Restaurant.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/spl_ex1.dir/Restaurant.cpp.s"
+	C:/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/Restaurant.cpp -o CMakeFiles/spl_ex1.dir/Restaurant.cpp.s
 
 # Object files for target spl_ex1
 spl_ex1_OBJECTS = \
-"CMakeFiles/spl_ex1.dir/files/main.cpp.o" \
-"CMakeFiles/spl_ex1.dir/files/Customer.cpp.o" \
-"CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.o"
+"CMakeFiles/spl_ex1.dir/main.cpp.o" \
+"CMakeFiles/spl_ex1.dir/Customer.cpp.o" \
+"CMakeFiles/spl_ex1.dir/Restaurant.cpp.o"
 
 # External object files for target spl_ex1
 spl_ex1_EXTERNAL_OBJECTS =
 
-spl_ex1.exe: CMakeFiles/spl_ex1.dir/files/main.cpp.o
-spl_ex1.exe: CMakeFiles/spl_ex1.dir/files/Customer.cpp.o
-spl_ex1.exe: CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.o
+spl_ex1.exe: CMakeFiles/spl_ex1.dir/main.cpp.o
+spl_ex1.exe: CMakeFiles/spl_ex1.dir/Customer.cpp.o
+spl_ex1.exe: CMakeFiles/spl_ex1.dir/Restaurant.cpp.o
 spl_ex1.exe: CMakeFiles/spl_ex1.dir/build.make
 spl_ex1.exe: CMakeFiles/spl_ex1.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/Lenovo/Documents/GitHub/spl_project_group77/spl_ex1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable spl_ex1.exe"

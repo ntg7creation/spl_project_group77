@@ -123,86 +123,86 @@ spl_ex1/fast:
 	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/build
 .PHONY : spl_ex1/fast
 
-files/Customer.o: files/Customer.cpp.o
+Customer.o: Customer.cpp.o
 
-.PHONY : files/Customer.o
-
-# target to build an object file
-files/Customer.cpp.o:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/Customer.cpp.o
-.PHONY : files/Customer.cpp.o
-
-files/Customer.i: files/Customer.cpp.i
-
-.PHONY : files/Customer.i
-
-# target to preprocess a source file
-files/Customer.cpp.i:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/Customer.cpp.i
-.PHONY : files/Customer.cpp.i
-
-files/Customer.s: files/Customer.cpp.s
-
-.PHONY : files/Customer.s
-
-# target to generate assembly for a file
-files/Customer.cpp.s:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/Customer.cpp.s
-.PHONY : files/Customer.cpp.s
-
-files/Restaurant.o: files/Restaurant.cpp.o
-
-.PHONY : files/Restaurant.o
+.PHONY : Customer.o
 
 # target to build an object file
-files/Restaurant.cpp.o:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.o
-.PHONY : files/Restaurant.cpp.o
+Customer.cpp.o:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/Customer.cpp.o
+.PHONY : Customer.cpp.o
 
-files/Restaurant.i: files/Restaurant.cpp.i
+Customer.i: Customer.cpp.i
 
-.PHONY : files/Restaurant.i
+.PHONY : Customer.i
 
 # target to preprocess a source file
-files/Restaurant.cpp.i:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.i
-.PHONY : files/Restaurant.cpp.i
+Customer.cpp.i:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/Customer.cpp.i
+.PHONY : Customer.cpp.i
 
-files/Restaurant.s: files/Restaurant.cpp.s
+Customer.s: Customer.cpp.s
 
-.PHONY : files/Restaurant.s
+.PHONY : Customer.s
 
 # target to generate assembly for a file
-files/Restaurant.cpp.s:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/Restaurant.cpp.s
-.PHONY : files/Restaurant.cpp.s
+Customer.cpp.s:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/Customer.cpp.s
+.PHONY : Customer.cpp.s
 
-files/main.o: files/main.cpp.o
+Restaurant.o: Restaurant.cpp.o
 
-.PHONY : files/main.o
+.PHONY : Restaurant.o
 
 # target to build an object file
-files/main.cpp.o:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/main.cpp.o
-.PHONY : files/main.cpp.o
+Restaurant.cpp.o:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/Restaurant.cpp.o
+.PHONY : Restaurant.cpp.o
 
-files/main.i: files/main.cpp.i
+Restaurant.i: Restaurant.cpp.i
 
-.PHONY : files/main.i
+.PHONY : Restaurant.i
 
 # target to preprocess a source file
-files/main.cpp.i:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/main.cpp.i
-.PHONY : files/main.cpp.i
+Restaurant.cpp.i:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/Restaurant.cpp.i
+.PHONY : Restaurant.cpp.i
 
-files/main.s: files/main.cpp.s
+Restaurant.s: Restaurant.cpp.s
 
-.PHONY : files/main.s
+.PHONY : Restaurant.s
 
 # target to generate assembly for a file
-files/main.cpp.s:
-	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/files/main.cpp.s
-.PHONY : files/main.cpp.s
+Restaurant.cpp.s:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/Restaurant.cpp.s
+.PHONY : Restaurant.cpp.s
+
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/spl_ex1.dir/build.make CMakeFiles/spl_ex1.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -213,15 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... spl_ex1"
 	@echo "... edit_cache"
-	@echo "... files/Customer.o"
-	@echo "... files/Customer.i"
-	@echo "... files/Customer.s"
-	@echo "... files/Restaurant.o"
-	@echo "... files/Restaurant.i"
-	@echo "... files/Restaurant.s"
-	@echo "... files/main.o"
-	@echo "... files/main.i"
-	@echo "... files/main.s"
+	@echo "... Customer.o"
+	@echo "... Customer.i"
+	@echo "... Customer.s"
+	@echo "... Restaurant.o"
+	@echo "... Restaurant.i"
+	@echo "... Restaurant.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
