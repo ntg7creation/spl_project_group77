@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class ExampleManager {
 
+	//test somthing 
+	
     public static void main(String[] args) {
         Map<String, ServiceCreator> serviceCreators = new HashMap<>();
         serviceCreators.put("ev-handler", ExampleEventHandlerService::new);
