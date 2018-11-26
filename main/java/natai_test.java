@@ -17,4 +17,9 @@ class natai_test {
 		assertTrue(8==4+4);
 	}
 	
+	@Test
+	void test4()
+	{
+		assertFalse(true);
+	}
 }
