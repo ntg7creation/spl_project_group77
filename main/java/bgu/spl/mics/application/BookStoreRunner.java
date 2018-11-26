@@ -6,5 +6,7 @@ package bgu.spl.mics.application;
  */
 public class BookStoreRunner {
     public static void main(String[] args) {
+    	//test
+    	//code
     }
 }
