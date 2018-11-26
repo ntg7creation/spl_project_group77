@@ -20,5 +20,6 @@ class natai_test {
 	@Test
 	void test4() {
 		assertTrue(8==4+5);
-	}
+
+}
 }
