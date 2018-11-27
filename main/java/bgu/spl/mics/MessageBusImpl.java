@@ -10,7 +10,8 @@ public class MessageBusImpl implements MessageBus {
 	
 	static private MessageBus TheBuss;
 	
-	static public MessageBus getBus()
+	
+	static public MessageBus getInstance()
 	{
 		if(TheBuss == null)
 		{
@@ -23,6 +24,7 @@ public class MessageBusImpl implements MessageBus {
 		// TODO Auto-generated constructor stub
 	} 
 	
+
 	@Override
 	public <T> void subscribeEvent(Class<? extends Event<T>> type, MicroService m) {
 		// TODO Auto-generated method stub
