@@ -76,7 +76,7 @@ public interface MessageBus {
      * @param m the micro-service to unregister.
      */
     void unregister(MicroService m);
-
+    
     /**
      * Using this method, a <b>registered</b> micro-service can take message
      * from its allocated queue.

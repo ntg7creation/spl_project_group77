@@ -7,6 +7,22 @@ package bgu.spl.mics;
  */
 public class MessageBusImpl implements MessageBus {
 
+	
+	static private MessageBus TheBuss;
+	
+	static public MessageBus getBus()
+	{
+		if(TheBuss == null)
+		{
+			TheBuss = new MessageBusImpl();
+		}
+		return TheBuss;
+	}
+	
+	private MessageBusImpl() {
+		// TODO Auto-generated constructor stub
+	} 
+	
 	@Override
 	public <T> void subscribeEvent(Class<? extends Event<T>> type, MicroService m) {
 		// TODO Auto-generated method stub
