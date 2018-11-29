@@ -41,7 +41,8 @@ public class Bus_test {
 	public void testSubscribeEvent() {
 		MicroService ms = new SellingService();
 		Event<String> ev = new ExampleEvent("test MicroService");
-		
+		m.subscribeEvent(ExampleEvent.class, ms);
+		assertNotNull(m.sendEvent(ev));
 
 	}
 

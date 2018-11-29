@@ -16,7 +16,7 @@ public class Future<T> {
 	 * This should be the the only public constructor in this class.
 	 */
 	public Future() {
-		//TODO: implement this
+		//dont this needs to be empty
 	}
 	
 	/**
@@ -59,6 +59,7 @@ public class Future<T> {
      *         elapsed, return null.
      */
 	public T get(long timeout, TimeUnit unit) {
+		//so this shold have sleep for ()
 		//TODO: implement this.
 		return null;
 	}
