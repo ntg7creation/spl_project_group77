@@ -68,7 +68,7 @@ public class InventoryTest {
 		BookInventoryInfo[] b = { bookinv1, bookinv2 };
 		i.load(b);
 		assertTrue (i.checkAvailabiltyAndGetPrice(bookinv1.getBookTitle()) == bookinv1.getPrice());
-		assertTrue(i.checkAvailabiltyAndGetPrice("none exsist")== -1);
+		assertTrue(i.checkAvailabiltyAndGetPrice("none exist")== -1);
 	}
 
 	@Test
