@@ -1,6 +1,9 @@
 package bgu.spl.mics.application.services;
 
 import bgu.spl.mics.MicroService;
+import bgu.spl.mics.application.messages.OrderBookEvent;
+import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
+import bgu.spl.mics.example.messages.ExampleEvent;
 
 /**
  * Selling service in charge of taking orders from customers.
@@ -21,7 +24,16 @@ public class SellingService extends MicroService{
 
 	@Override
 	protected void initialize() {
-		// TODO Implement this
+        System.out.println("Event Handler " + getName() + " started");
+        
+        subscribeEvent(OrderBookEvent.class, ev -> {
+            System.out.println("Event Handler " + getName() + " got a new event ");
+            BookInventoryInfo info = new BookInventoryInfo("microBookTest",2,50);
+            complete(ev, info);
+            if (false) { // i want to terminate
+                terminate();
+            }
+        });
 		
 	}
 
