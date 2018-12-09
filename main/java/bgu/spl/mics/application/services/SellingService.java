@@ -8,6 +8,7 @@ import bgu.spl.mics.application.messages.CheckAvilability;
 import bgu.spl.mics.application.messages.OrderBookEvent;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.MoneyRegister;
+import bgu.spl.mics.application.passiveObjects.OrderReceipt;
 import bgu.spl.mics.example.messages.ExampleBroadcast;
 import bgu.spl.mics.example.messages.ExampleEvent;
 
@@ -47,9 +48,9 @@ public class SellingService extends MicroService {
 		return null;
 	}
 	
-	private Boolean Checkfands()
+	private OrderReceipt Checkfands(BookInventoryInfo b)
 	{
-		return false;
+		return null;
 	}
 	
 	
@@ -65,10 +66,12 @@ public class SellingService extends MicroService {
 		subscribeEvent(OrderBookEvent.class, ev -> { // so this is the call function of the ev event that is being sent
 			System.out.println("Event Handler " + getName() + " got a new event ");
 			Boolean isAvilabil = AskifAvilabil();
-			BookInventoryInfo info = new BookInventoryInfo("name", 3, 50);
-		//	if(isAvilabil == true)
-				//info = new Book
-			complete(ev, info);
+			OrderReceipt receipt;
+			BookInventoryInfo book = new BookInventoryInfo("name", 3, 50);
+			if(isAvilabil == true)
+				receipt = Checkfands(book);
+			
+			complete(ev, book);
 			if (false) { // i want to terminate
 				terminate();
 			}

@@ -1,6 +1,6 @@
 package bgu.spl.mics;
 
-import java.util.List;
+import java.util.HashMap;
 
 /**
  * The MicroService is an abstract class that any micro-service in the system
@@ -26,7 +26,7 @@ public abstract class MicroService implements Runnable {
 	private MessageBus bus;
 	private boolean terminated = false;
 	private final String name;
-	private List<Callback> myCallbacks;
+	private HashMap< Class,Callback> myCallbacks;
 	
 	/**
 	 * @param name
@@ -35,6 +35,7 @@ public abstract class MicroService implements Runnable {
 	 */
 	public MicroService(String name) {
 		bus = MessageBusImpl.getInstance();
+		myCallbacks = new HashMap<>();
 		this.name = name;
 	}
 
@@ -61,7 +62,7 @@ public abstract class MicroService implements Runnable {
 	 */
 	protected final <T, E extends Event<T>> void subscribeEvent(Class<E> type, Callback<E> callback) {
 		bus.subscribeEvent(type, this);
-		myCallbacks.add(callback);
+		myCallbacks.put(type, callback);
 	}
 
 	/**
@@ -165,8 +166,16 @@ public abstract class MicroService implements Runnable {
 	public final void run() {
 		initialize();
 		while (!terminated) {
-			System.out.println("NOT IMPLEMENTED!!!"); // TODO: you should delete this line :)
+			try {
+			Message whatToDO =	bus.awaitMessage(this);
+			myCallbacks.get(whatToDO.getClass()).call(whatToDO);;
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+			//System.out.println("NOT IMPLEMENTED!!!"); // TODO: you should delete this line :)
 		}
 	}
+	
 
 }

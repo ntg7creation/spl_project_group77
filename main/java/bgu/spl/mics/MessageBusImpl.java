@@ -1,5 +1,8 @@
 package bgu.spl.mics;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * The {@link MessageBusImpl class is the implementation of the MessageBus interface.
  * Write your implementation here!
@@ -9,7 +12,7 @@ public class MessageBusImpl implements MessageBus {
 
 	
 	static private MessageBus TheBuss;
-	
+	private HashMap<Class, List<MicroService>> subscrtion;
 	
 	static public MessageBus getInstance()
 	{
@@ -21,6 +24,8 @@ public class MessageBusImpl implements MessageBus {
 	}
 	
 	private MessageBusImpl() {
+		subscrtion = new HashMap<>();
+		
 		// TODO Auto-generated constructor stub
 	} 
 	
@@ -28,7 +33,6 @@ public class MessageBusImpl implements MessageBus {
 	@Override
 	public <T> void subscribeEvent(Class<? extends Event<T>> type, MicroService m) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

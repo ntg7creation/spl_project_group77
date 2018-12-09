@@ -13,12 +13,19 @@ import bgu.spl.mics.Future;
  */
 public class ResourcesHolder {
 	
+	
+	private ResourcesHolder() {
+	}
+	private static class Holder {
+		private static final ResourcesHolder INSTANCE = new ResourcesHolder();
+	}
+	
 	/**
      * Retrieves the single instance of this class.
      */
 	public static ResourcesHolder getInstance() {
-		//TODO: Implement this
-		return null;
+		return Holder.INSTANCE;
+
 	}
 	
 	/**

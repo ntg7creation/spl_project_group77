@@ -14,7 +14,9 @@ public class Future<T> {
 
 	private T result;
 	private Boolean done;
-
+	private Object lock;
+	
+	
 	/**
 	 * This should be the the only public constructor in this class.
 	 */
@@ -34,8 +36,14 @@ public class Future<T> {
 	 *         is available.
 	 * 
 	 */
-	public T get() {
-		return result;
+	 public T get() {
+		try {
+		while (result == null) lock.wait();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		 return result;
 	}
 
 	/**
@@ -44,6 +52,8 @@ public class Future<T> {
 	public void resolve(T result) {
 		this.result = result;
 		done = true;
+		lock.notifyAll();
+		this.notifyAll();
 	}
 
 	/**

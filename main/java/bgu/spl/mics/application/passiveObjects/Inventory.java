@@ -1,8 +1,5 @@
 package bgu.spl.mics.application.passiveObjects;
 
-import bgu.spl.mics.MessageBus;
-import bgu.spl.mics.MessageBusImpl;
-
 /**
  * Passive data-object representing the store inventory. It holds a collection
  * of {@link BookInventoryInfo} for all the books in the store.
@@ -15,8 +12,13 @@ import bgu.spl.mics.MessageBusImpl;
 public class Inventory {
 
 	static private Inventory TheInventory;
+	private BookInventoryInfo[] inventory;
 
 	private Inventory() {
+	}
+
+	private static class Holder {
+		private static final Inventory INSTANCE = new Inventory();
 	}
 
 	// TODO Auto-generated constructor stub
@@ -25,10 +27,7 @@ public class Inventory {
 	 */
 	public static Inventory getInstance() {
 
-		if (TheInventory == null) {
-			TheInventory = new Inventory();
-		}
-		return TheInventory;
+		return Holder.INSTANCE;
 
 	}
 
@@ -37,11 +36,12 @@ public class Inventory {
 	 * store inventory.
 	 * <p>
 	 * 
-	 * @param inventory Data structure containing all data necessary for
-	 *                  initialization of the inventory.
+	 * @param inventory
+	 *            Data structure containing all data necessary for initialization of
+	 *            the inventory.
 	 */
 	public void load(BookInventoryInfo[] inventory) {
-		
+		this.inventory = inventory;
 
 	}
 
@@ -49,25 +49,41 @@ public class Inventory {
 	 * Attempts to take one book from the store.
 	 * <p>
 	 * 
-	 * @param book Name of the book to take from the store
+	 * @param book
+	 *            Name of the book to take from the store
 	 * @return an {@link Enum} with options NOT_IN_STOCK and SUCCESSFULLY_TAKEN. The
 	 *         first should not change the state of the inventory while the second
 	 *         should reduce by one the number of books of the desired type.
 	 */
 	public OrderResult take(String book) {
-
-		return null;
+		OrderResult result = OrderResult.DontHaveBook;
+		for (BookInventoryInfo bookInventoryInfo : inventory) {
+			if (bookInventoryInfo.getBookTitle().equals(book)) {
+				result = OrderResult.OutOfStock;
+				if (bookInventoryInfo.removeBooks(1)) {
+					return OrderResult.Success;
+				}
+			}
+		}
+		return result;
 	}
 
 	/**
 	 * Checks if a certain book is available in the inventory.
 	 * <p>
 	 * 
-	 * @param book Name of the book.
+	 * @param book
+	 *            Name of the book.
 	 * @return the price of the book if it is available, -1 otherwise.
 	 */
 	public int checkAvailabiltyAndGetPrice(String book) {
-		// TODO: Implement this
+		for (BookInventoryInfo bookInventoryInfo : inventory) {
+			if (bookInventoryInfo.getBookTitle().equals(book)) {
+				if (bookInventoryInfo.getAmountInInventory() > 0) {
+					return bookInventoryInfo.getPrice();
+				}
+			}
+		}
 		return -1;
 	}
 
@@ -82,6 +98,7 @@ public class Inventory {
 	 * output.
 	 */
 	public void printInventoryToFile(String filename) {
-		// TODO: Implement this
+		String output = "";
+
 	}
 }

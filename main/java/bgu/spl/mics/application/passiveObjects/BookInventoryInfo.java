@@ -20,7 +20,19 @@ public class BookInventoryInfo {
 	}
 	
 	
-
+	public void addBooks(int x) {
+		amount+= x;
+	}
+	
+	public Boolean removeBooks(int x)
+	{
+		if(amount<x)
+			return false;
+		amount-=x;
+		return true;
+	}
+	
+	
 	/**
      * Retrieves the title of this book.
      * <p>

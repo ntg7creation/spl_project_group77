@@ -23,7 +23,6 @@ public class DeliveryVehicle {
 		 this. speed = speed;
 		 
 	
-		// TODO Implement this
 	  }
 	/**
      * Retrieves the license of this delivery vehicle.   
@@ -31,7 +30,6 @@ public class DeliveryVehicle {
 	public int getLicense() {
 		
 		return license;
-		// TODO Implement this
 	}
 	
 	/**
@@ -40,7 +38,6 @@ public class DeliveryVehicle {
      * @return Number of ticks needed for 1 Km.
      */
 	public int getSpeed() {
-		// TODO Implement this
 		return speed;
 	}
 	
@@ -55,6 +52,7 @@ public class DeliveryVehicle {
 		
 		try
 		{
+			//need to change
 			  Thread.sleep(distance/speed);
 		}
 		catch(Exception e) {}
