@@ -37,15 +37,16 @@ public class InventoryService extends MicroService{
 		// subscribes to CheckAvailability Event
 		// subscribeEvent(CheckAvailabilityEvent.class, event -> {
 		// getPrice = inventory.checkAvailabiltyAndGetPrice(event.getBook().getBookTitle());
-		// complete
+		// complete (ev,null)
 
 		// subscribes to TickBroadCast. Event //Check again if necessary
 		// subscribeBroadcast(TickBroadCast.class, getTick -> {
 		// currTick=getTick.getTime();
 		// complete
 		subscribeEvent(CheckAvilabilityAndgetPrice.class, ev -> { // so this is the call function of the ev event that is being sent
-			System.out.println("Event Handler " + getName() + " got a new event "); // TODO delete
-			
+			System.out.println("Event Handler " + getName() + " got a new event ");
+			complete(ev,null);
+						
 
 		});
 
