@@ -11,7 +11,7 @@ package bgu.spl.mics.application.passiveObjects;
  */
 public class Inventory {
 
-	static private Inventory TheInventory;
+	//static private Inventory TheInventory;
 	private BookInventoryInfo[] inventory;
 
 	private Inventory() {
@@ -21,7 +21,6 @@ public class Inventory {
 		private static final Inventory INSTANCE = new Inventory();
 	}
 
-	// TODO Auto-generated constructor stub
 	/**
 	 * Retrieves the single instance of this class.
 	 */

@@ -1,12 +1,14 @@
 package bgu.spl.mics.application.services;
 
+import java.awt.print.Book;
 import java.util.concurrent.TimeUnit;
 
 import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
-import bgu.spl.mics.application.messages.CheckAvilability;
+import bgu.spl.mics.application.messages.CheckAvilabilityAndgetPrice;
 import bgu.spl.mics.application.messages.OrderBookEvent;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
+import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.MoneyRegister;
 import bgu.spl.mics.application.passiveObjects.OrderReceipt;
 import bgu.spl.mics.example.messages.ExampleBroadcast;
@@ -28,14 +30,16 @@ public class SellingService extends MicroService {
 		// TODO Implement this
 	}
 
-	MoneyRegister themoney;
-	
-	private Boolean AskifAvilabil() {
-		Future<Boolean> futureObject = (Future<Boolean>) sendEvent(new CheckAvilability());
+	private int time;
+	private MoneyRegister themoney;
+
+	private Integer AskifAvilabil() {
+		Future<Integer> futureObject = sendEvent(new CheckAvilabilityAndgetPrice());
 		if (futureObject != null) {
-			Boolean resolved = futureObject.get(100, TimeUnit.MILLISECONDS);
+			Integer resolved = futureObject.get(100, TimeUnit.MILLISECONDS);
 			if (resolved != null) {
 				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
+				return resolved;
 			} else {
 				System.out.println("Time has elapsed, no services has resolved the event - terminating");
 			}
@@ -43,19 +47,18 @@ public class SellingService extends MicroService {
 			System.out.println(
 					"No Micro-Service has registered to handle ExampleEvent events! The event cannot be processed");
 		}
-		
-		
+
 		return null;
 	}
-	
-	private OrderReceipt Checkfands(BookInventoryInfo b)
-	{
+
+	private OrderReceipt buyBook(Integer price, Customer c,OrderReceipt r) {
+		themoney.chargeCreditCard(c, price);
+	//	the
 		return null;
 	}
-	
-	
+
 	private BookInventoryInfo getBook() {
-		//
+
 		return null;
 	}
 
@@ -65,18 +68,28 @@ public class SellingService extends MicroService {
 
 		subscribeEvent(OrderBookEvent.class, ev -> { // so this is the call function of the ev event that is being sent
 			System.out.println("Event Handler " + getName() + " got a new event ");
-			Boolean isAvilabil = AskifAvilabil();
-			OrderReceipt receipt;
-			BookInventoryInfo book = new BookInventoryInfo("name", 3, 50);
-			if(isAvilabil == true)
-				receipt = Checkfands(book);
-			
-			complete(ev, book);
+			Integer price = AskifAvilabil();
+			Customer c = ev.getCustomer();
+			OrderReceipt receipt = new OrderReceipt(8, c.getId(), ev.getbookName(), time);
+			BookInventoryInfo book = null;
+			if (price != -1) {
+				if (ev.getCustomer().getAvailableCreditAmount() > price) {
+					book = getBook();
+					buyBook(price, ev.getCustomer(),receipt);
+					sendBook(book,c);
+				}
+			}
+			complete(ev, receipt);
 			if (false) { // i want to terminate
 				terminate();
 			}
 		});
 
+	}
+
+	private void sendBook(BookInventoryInfo book, Customer c) {
+//		sendEvent(new )
+		
 	}
 
 }
