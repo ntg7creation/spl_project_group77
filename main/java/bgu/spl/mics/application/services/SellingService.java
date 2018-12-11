@@ -6,7 +6,10 @@ import java.util.concurrent.TimeUnit;
 import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
 import bgu.spl.mics.application.messages.CheckAvilabilityAndgetPrice;
+import bgu.spl.mics.application.messages.DeliveryEvent;
+import bgu.spl.mics.application.messages.GetBookEvent;
 import bgu.spl.mics.application.messages.OrderBookEvent;
+import bgu.spl.mics.application.messages.TimeChangeBroadcast;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.MoneyRegister;
@@ -51,14 +54,25 @@ public class SellingService extends MicroService {
 		return null;
 	}
 
-	private OrderReceipt buyBook(Integer price, Customer c,OrderReceipt r) {
+	private OrderReceipt buyBook(Integer price, Customer c, OrderReceipt r) {
 		themoney.chargeCreditCard(c, price);
-	//	the
 		return null;
 	}
 
-	private BookInventoryInfo getBook() {
-
+	private BookInventoryInfo getBook(String name) {
+		Future<BookInventoryInfo> futureObject = sendEvent(new GetBookEvent());
+		if (futureObject != null) {
+			BookInventoryInfo resolved = futureObject.get(100, TimeUnit.MILLISECONDS);
+			if (resolved != null) {
+				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
+				return resolved;
+			} else {
+				System.out.println("Time has elapsed, no services has resolved the event - terminating");
+			}
+		} else {
+			System.out.println(
+					"No Micro-Service has registered to handle ExampleEvent events! The event cannot be processed");
+		}
 		return null;
 	}
 
@@ -70,17 +84,21 @@ public class SellingService extends MicroService {
 			System.out.println("Event Handler " + getName() + " got a new event ");
 			Integer price = AskifAvilabil();
 			Customer c = ev.getCustomer();
-			OrderReceipt receipt = new OrderReceipt(8, c.getId(), ev.getbookName(), time);
+			OrderReceipt receipt = new OrderReceipt(8,getName(), c.getId(), ev.getbookName(), time);
 			BookInventoryInfo book = null;
 			if (price != -1) {
 				if (ev.getCustomer().getAvailableCreditAmount() > price) {
-					book = getBook();
-					buyBook(price, ev.getCustomer(),receipt);
-					sendBook(book,c);
+					book = getBook(ev.getbookName());
+					buyBook(price, ev.getCustomer(), receipt);
+					sendBook(book, c);
 				}
 			}
 			complete(ev, receipt);
-			if (false) { // i want to terminate
+
+		});
+		subscribeBroadcast(TimeChangeBroadcast.class, ev->{
+			time = ev.getNewTime();// dont care for double threads
+			if (time == 999999999) { // i want to terminate
 				terminate();
 			}
 		});
@@ -88,8 +106,7 @@ public class SellingService extends MicroService {
 	}
 
 	private void sendBook(BookInventoryInfo book, Customer c) {
-//		sendEvent(new )
-		
+		sendEvent(new DeliveryEvent());
 	}
 
 }

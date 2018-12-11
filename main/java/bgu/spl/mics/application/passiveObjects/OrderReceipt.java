@@ -19,8 +19,9 @@ public class OrderReceipt {
 	private int sold_tick;
 	private int process_tick;
 
-	public OrderReceipt(int orderid, int customer_id, String book_title, int ordertick) {
+	public OrderReceipt(int orderid,String seller, int customer_id, String book_title, int ordertick) {
 		order_id = orderid;
+		this.seller = seller;
 		this.customer_id = customer_id;
 		this.book_title = book_title;
 		order_tick = ordertick;
@@ -38,10 +39,6 @@ public class OrderReceipt {
 	 */
 	public String getSeller() {
 		return seller;
-	}
-
-	public void setSeller(String seller) {
-		this.seller = seller;
 	}
 
 	/**
