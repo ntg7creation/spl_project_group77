@@ -1,6 +1,5 @@
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -39,7 +38,7 @@ public class Bus_test {
 
 	@Test
 	public void testSubscribeEvent() {
-		MicroService ms = new SellingService();
+		MicroService ms = new SellingService("test sellingService");
 		Event<String> ev = new ExampleEvent("test MicroService");
 		m.subscribeEvent(ExampleEvent.class, ms);
 		assertNotNull(m.sendEvent(ev));

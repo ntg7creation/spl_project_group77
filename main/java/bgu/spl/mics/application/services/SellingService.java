@@ -1,6 +1,5 @@
 package bgu.spl.mics.application.services;
 
-import java.awt.print.Book;
 import java.util.concurrent.TimeUnit;
 
 import bgu.spl.mics.Future;
@@ -9,13 +8,13 @@ import bgu.spl.mics.application.messages.CheckAvilabilityAndgetPrice;
 import bgu.spl.mics.application.messages.DeliveryEvent;
 import bgu.spl.mics.application.messages.GetBookEvent;
 import bgu.spl.mics.application.messages.OrderBookEvent;
-import bgu.spl.mics.application.messages.TimeChangeBroadcast;
+import bgu.spl.mics.application.messages.Tick;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Customer;
+import bgu.spl.mics.application.passiveObjects.Inventory;
 import bgu.spl.mics.application.passiveObjects.MoneyRegister;
 import bgu.spl.mics.application.passiveObjects.OrderReceipt;
-import bgu.spl.mics.example.messages.ExampleBroadcast;
-import bgu.spl.mics.example.messages.ExampleEvent;
+import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 
 /**
  * Selling service in charge of taking orders from customers. Holds a reference
@@ -36,7 +35,7 @@ public class SellingService extends MicroService {
 		themoney = MoneyRegister.getInstance();
 	}
 
-	private Integer AskifAvilabil() {
+	private Integer AskAvilabilityAndGetPrice() {
 		Future<Integer> futureObject = sendEvent(new CheckAvilabilityAndgetPrice());
 		if (futureObject != null) {
 			Integer resolved = futureObject.get(100, TimeUnit.MILLISECONDS);
@@ -81,9 +80,9 @@ public class SellingService extends MicroService {
 
 		subscribeEvent(OrderBookEvent.class, ev -> { // so this is the call function of the ev event that is being sent
 			System.out.println("Event Handler " + getName() + " got a new event "); // TODO delete
-			Integer price = AskifAvilabil();
 			Customer c = ev.getCustomer();
 			OrderReceipt receipt = new OrderReceipt(8, getName(), c.getId(), ev.getbookName(), time);
+			Integer price = AskAvilabilityAndGetPrice();
 			BookInventoryInfo book = null;
 			if (price != -1) {
 				if (ev.getCustomer().getAvailableCreditAmount() > price) {
@@ -92,13 +91,13 @@ public class SellingService extends MicroService {
 					buyBook(price, ev.getCustomer(), receipt);
 					receipt.setIssuedTick(time);
 					sendBook(book, c);
-					complete(ev, receipt);
+
 				}
 			}
 			complete(ev, receipt);
 
 		});
-		subscribeBroadcast(TimeChangeBroadcast.class, ev -> {
+		subscribeBroadcast(Tick.class, ev -> {
 			time = ev.getNewTime();// dont care for double threads
 			if (time == 999999999) { // TODO Implement this i want to terminate to to change
 				terminate();

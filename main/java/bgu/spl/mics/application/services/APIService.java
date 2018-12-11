@@ -1,11 +1,13 @@
 package bgu.spl.mics.application.services;
 
-import java.util.Hashtable;
 import java.util.HashMap;
 
 import bgu.spl.mics.Event;
 import bgu.spl.mics.MicroService;
 import bgu.spl.mics.application.passiveObjects.Customer;
+import bgu.spl.mics.application.passiveObjects.Inventory;
+import bgu.spl.mics.application.passiveObjects.MoneyRegister;
+import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 
 /**
  * APIService is in charge of the connection between a client and the store.
@@ -32,8 +34,12 @@ public class APIService extends MicroService{
 
 	@Override
 	protected void initialize() {
+<<<<<<< HEAD
 		
 		//broadCastTick Only
+=======
+//broadcast
+>>>>>>> branch 'ex2' of https://github.com/ntg7creation/spl_project_group77.git
 		// TODO Implement this
 		
 	}
