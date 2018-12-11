@@ -1,7 +1,14 @@
 package bgu.spl.mics.application.services;
 
 import bgu.spl.mics.MicroService;
+import bgu.spl.mics.application.messages.CheckAvilabilityAndgetPrice;
+import bgu.spl.mics.application.messages.OrderBookEvent;
+import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
+import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.Inventory;
+import bgu.spl.mics.application.passiveObjects.MoneyRegister;
+import bgu.spl.mics.application.passiveObjects.OrderReceipt;
+import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 
 /**
  * InventoryService is in charge of the book inventory and stock.
@@ -32,10 +39,15 @@ public class InventoryService extends MicroService{
 		// getPrice = inventory.checkAvailabiltyAndGetPrice(event.getBook().getBookTitle());
 		// complete
 
-		// subscribes to CheckAvailability Event
+		// subscribes to TickBroadCast. Event //Check again if necessary
 		// subscribeBroadcast(TickBroadCast.class, getTick -> {
 		// currTick=getTick.getTime();
 		// complete
+		subscribeEvent(CheckAvilabilityAndgetPrice.class, ev -> { // so this is the call function of the ev event that is being sent
+			System.out.println("Event Handler " + getName() + " got a new event "); // TODO delete
+			
+
+		});
 
 
 		// TODO Implement this
