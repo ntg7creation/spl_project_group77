@@ -1,6 +1,7 @@
 package bgu.spl.mics.application.services;
 
 import bgu.spl.mics.MicroService;
+import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 
 /**
  * ResourceService is in charge of the store resources - the delivery vehicles.
@@ -12,14 +13,20 @@ import bgu.spl.mics.MicroService;
  * You MAY change constructor signatures and even add new public constructors.
  */
 public class ResourceService extends MicroService{
+	private ResourcesHolder ResourcesHolder;
 
-	public ResourceService() {
-		super("Change_This_Name");
+	public ResourceService(ResourcesHolder holder) {
+		super("ResourceService");
+		this.ResourcesHolder = holder;
+		
 		// TODO Implement this
 	}
 
 	@Override
 	protected void initialize() {
+		
+		// subscribes to DeliveryEvent Event // Check again this Class
+		// 		subscribeEvent(DeliveryEvent.class, getCar->{
 		// TODO Implement this
 		
 	}

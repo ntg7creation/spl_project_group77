@@ -1,4 +1,6 @@
 package bgu.spl.mics.application.passiveObjects;
+import java.util.concurrent.ConcurrentHashMap;
+
 
 /**
  * Passive data-object representing the store inventory. It holds a collection
@@ -13,6 +15,8 @@ public class Inventory {
 
 	//static private Inventory TheInventory;
 	private BookInventoryInfo[] inventory;
+	private static ConcurrentHashMap<String,BookInventoryInfo> Theinventory;
+
 
 	private Inventory() {
 	}
@@ -41,6 +45,8 @@ public class Inventory {
 	 */
 	public void load(BookInventoryInfo[] inventory) {
 		this.inventory = inventory;
+		for(int i=0;i<inventory.length;i++)
+			Theinventory.put(inventory[i].getBookTitle(), inventory[i]);
 
 	}
 

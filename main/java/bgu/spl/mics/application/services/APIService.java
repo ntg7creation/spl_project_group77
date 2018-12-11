@@ -1,6 +1,11 @@
 package bgu.spl.mics.application.services;
 
+import java.util.Hashtable;
+import java.util.HashMap;
+
+import bgu.spl.mics.Event;
 import bgu.spl.mics.MicroService;
+import bgu.spl.mics.application.passiveObjects.Customer;
 
 /**
  * APIService is in charge of the connection between a client and the store.
@@ -12,9 +17,16 @@ import bgu.spl.mics.MicroService;
  * You MAY change constructor signatures and even add new public constructors.
  */
 public class APIService extends MicroService{
+    private HashMap<Integer,Event<String>> order;
+    private Customer customer;
 
-	public APIService() {
-		super("Change_This_Name");
+
+    public APIService(Customer customer, HashMap<Integer,Event<String>> booksTicks) {
+        super("APIService : " + customer.getId());
+        customer = customer;
+        booksTicks = booksTicks;
+    
+
 		// TODO Implement this
 	}
 
