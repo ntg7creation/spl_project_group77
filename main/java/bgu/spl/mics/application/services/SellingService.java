@@ -48,7 +48,7 @@ public class SellingService extends MicroService {
 			}
 		} else {
 			System.out.println(
-					"No Micro-Service has registered to handle ExampleEvent events! The event cannot be processed");
+					"No Micro-Service has registered to handle CheckAvilabilityAndgetPrice events! The event cannot be processed");
 		}
 
 		return null;
@@ -70,7 +70,7 @@ public class SellingService extends MicroService {
 			}
 		} else {
 			System.out.println(
-					"No Micro-Service has registered to handle ExampleEvent events! The event cannot be processed");
+					"No Micro-Service has registered to handle GetBookEvent events! The event cannot be processed");
 		}
 		return null;
 	}
