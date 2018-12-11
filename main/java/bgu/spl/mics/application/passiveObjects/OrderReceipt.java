@@ -14,8 +14,8 @@ public class OrderReceipt {
 	private String seller;
 	private int customer_id;
 	private String book_title;
-	private int price;
 	private int order_tick;
+	private int price;
 	private int sold_tick;
 	private int process_tick;
 

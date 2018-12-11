@@ -28,13 +28,13 @@ import bgu.spl.mics.example.messages.ExampleEvent;
  */
 public class SellingService extends MicroService {
 
-	public SellingService() {
-		super("Change_This_Name");
-		// TODO Implement this
-	}
-
 	private int time;
 	private MoneyRegister themoney;
+
+	public SellingService(String name) {
+		super(name);
+		themoney = MoneyRegister.getInstance();
+	}
 
 	private Integer AskifAvilabil() {
 		Future<Integer> futureObject = sendEvent(new CheckAvilabilityAndgetPrice());
@@ -54,13 +54,12 @@ public class SellingService extends MicroService {
 		return null;
 	}
 
-	private OrderReceipt buyBook(Integer price, Customer c, OrderReceipt r) {
+	private void buyBook(Integer price, Customer c, OrderReceipt r) {
 		themoney.chargeCreditCard(c, price);
-		return null;
 	}
 
 	private BookInventoryInfo getBook(String name) {
-		Future<BookInventoryInfo> futureObject = sendEvent(new GetBookEvent());
+		Future<BookInventoryInfo> futureObject = sendEvent(new GetBookEvent(name));
 		if (futureObject != null) {
 			BookInventoryInfo resolved = futureObject.get(100, TimeUnit.MILLISECONDS);
 			if (resolved != null) {
@@ -81,24 +80,27 @@ public class SellingService extends MicroService {
 		System.out.println("Event Handler " + getName() + " started");
 
 		subscribeEvent(OrderBookEvent.class, ev -> { // so this is the call function of the ev event that is being sent
-			System.out.println("Event Handler " + getName() + " got a new event ");
+			System.out.println("Event Handler " + getName() + " got a new event "); // TODO delete
 			Integer price = AskifAvilabil();
 			Customer c = ev.getCustomer();
-			OrderReceipt receipt = new OrderReceipt(8,getName(), c.getId(), ev.getbookName(), time);
+			OrderReceipt receipt = new OrderReceipt(8, getName(), c.getId(), ev.getbookName(), time);
 			BookInventoryInfo book = null;
 			if (price != -1) {
 				if (ev.getCustomer().getAvailableCreditAmount() > price) {
+					receipt.setProcessTick(time);
 					book = getBook(ev.getbookName());
 					buyBook(price, ev.getCustomer(), receipt);
+					receipt.setIssuedTick(time);
 					sendBook(book, c);
+					complete(ev, receipt);
 				}
 			}
 			complete(ev, receipt);
 
 		});
-		subscribeBroadcast(TimeChangeBroadcast.class, ev->{
+		subscribeBroadcast(TimeChangeBroadcast.class, ev -> {
 			time = ev.getNewTime();// dont care for double threads
-			if (time == 999999999) { // i want to terminate
+			if (time == 999999999) { // TODO Implement this i want to terminate to to change
 				terminate();
 			}
 		});
@@ -106,7 +108,7 @@ public class SellingService extends MicroService {
 	}
 
 	private void sendBook(BookInventoryInfo book, Customer c) {
-		sendEvent(new DeliveryEvent());
+		Future<Object> futureObject = sendEvent(new DeliveryEvent(book, c));
 	}
 
 }
