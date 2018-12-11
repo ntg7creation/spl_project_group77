@@ -1,7 +1,7 @@
 package bgu.spl.mics.application.services;
 
 import bgu.spl.mics.MicroService;
-import bgu.spl.mics.application.messages.CheckAvilabilityAndgetPrice;
+import bgu.spl.mics.application.messages.CheckAvailabilityAndgetPrice;
 import bgu.spl.mics.application.messages.OrderBookEvent;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Customer;
@@ -35,15 +35,15 @@ public class InventoryService extends MicroService{
 	protected void initialize() {
 
 		// subscribes to CheckAvailability Event
-		// subscribeEvent(CheckAvailabilityEvent.class, event -> {
-		// getPrice = inventory.checkAvailabiltyAndGetPrice(event.getBook().getBookTitle());
+		 subscribeEvent(CheckAvailabilityAndgetPrice.class, event -> {
+		int getPrice = inventory.checkAvailabiltyAndGetPrice(event.getBookTitle());
 		// complete (ev,null)
 
 		// subscribes to TickBroadCast. Event //Check again if necessary
 		// subscribeBroadcast(TickBroadCast.class, getTick -> {
 		// currTick=getTick.getTime();
 		// complete
-		subscribeEvent(CheckAvilabilityAndgetPrice.class, ev -> { // so this is the call function of the ev event that is being sent
+		subscribeEvent(CheckAvailabilityAndgetPrice.class, ev -> { // so this is the call function of the ev event that is being sent
 			System.out.println("Event Handler " + getName() + " got a new event ");
 			complete(ev,null);
 						

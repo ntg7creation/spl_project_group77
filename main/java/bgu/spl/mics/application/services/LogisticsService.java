@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
-import bgu.spl.mics.application.messages.CheckAvilabilityAndgetPrice;
+import bgu.spl.mics.application.messages.CheckAvailabilityEvent;
 import bgu.spl.mics.application.messages.DeliveryEvent;
 import bgu.spl.mics.application.messages.GetVehicleEvent;
 import bgu.spl.mics.application.messages.OrderBookEvent;
