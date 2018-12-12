@@ -103,7 +103,12 @@ public class Inventory {
 	 * output.
 	 */
 	public void printInventoryToFile(String filename) {
-		String output = "";
-
+		synchronized (Theinventory){
+			ConcurrentHashMap<String, Integer> booksHashMap = new ConcurrentHashMap<>();
+			for(BookInventoryInfo bookInfo: inventory){
+				booksHashMap.put(bookInfo.getBookTitle(), bookInfo.getAmountInInventory());
+// need to complete
+	}
+		}
 	}
 }
