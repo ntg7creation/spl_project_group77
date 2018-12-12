@@ -34,9 +34,7 @@ public class APIService extends MicroService{
 
 	@Override
 	protected void initialize() {
-//broadcast
-		// TODO Implement this
-		
+
 	}
 
 }

@@ -17,23 +17,27 @@ import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
  */
 public class ResourceService extends MicroService {
 	private ResourcesHolder ResourcesHolder;
+	
+	//g
 
-	public ResourceService(ResourcesHolder holder) {
-		super("ResourceService");
-		this.ResourcesHolder = holder;
-
+	public ResourceService(String Myname) {
+		super(Myname);
+		this.ResourcesHolder = ResourcesHolder.getInstance();
+		
 		// TODO Implement this
 	}
 
 	@Override
 	protected void initialize() {
 
-		// subscribes to GetVehicleEvent/ Check again this Class
-		subscribeEvent(DeliveryEvent.class, ev -> {
-			// TODO Implement this
+//		this.subscribeEvent(ResourceServiceEvent.class, deliveryMessage-> {
+//			Future<DeliveryVehicle> futureDeliveryVehicle =	this.resourcesHolder.acquireVehicle();
+//			DeliveryVehicle deliveryVehicle = futureDeliveryVehicle.get();
+//
+//			deliveryVehicle.deliver(deliveryMessage.getDeliveryMessage().getAddress(), deliveryMessage.getDeliveryMessage().getDistance());
+//			this.resourcesHolder.releaseVehicle(deliveryVehicle);
+//			
+//		});
 
-			
-			complete(ev, null);
-		});
 	}
 }

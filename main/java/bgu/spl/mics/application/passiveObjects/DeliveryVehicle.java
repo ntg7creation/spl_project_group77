@@ -53,7 +53,7 @@ public class DeliveryVehicle {
 
 		try {
 			// need to change
-			Thread.sleep(distance / speed);
+			Thread.sleep((int)distance / speed);
 		} catch (Exception e) {
 		}
 		// TODO Implement this
