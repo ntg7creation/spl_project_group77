@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
-import bgu.spl.mics.application.messages.CheckAvailabilityEvent;
+import bgu.spl.mics.application.messages.CheckAvailabilityEventAndGetPrice;
 import bgu.spl.mics.application.messages.DeliveryEvent;
 import bgu.spl.mics.application.messages.GetBookEvent;
 import bgu.spl.mics.application.messages.OrderBookEvent;
@@ -36,7 +36,7 @@ public class SellingService extends MicroService {
 	}
 
 	private Integer AskAvilabilityAndGetPrice() {
-		Future<Integer> futureObject = sendEvent(new CheckAvailabilityEvent("test"));
+		Future<Integer> futureObject = sendEvent(new CheckAvailabilityEventAndGetPrice("test"));
 		if (futureObject != null) {
 			Integer resolved = futureObject.get(100, TimeUnit.MILLISECONDS);
 			if (resolved != null) {

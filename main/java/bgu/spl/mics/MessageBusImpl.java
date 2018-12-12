@@ -3,7 +3,7 @@ package bgu.spl.mics;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import bgu.spl.mics.application.messages.CheckAvailabilityEvent;
+import bgu.spl.mics.application.messages.CheckAvailabilityEventAndGetPrice;
 import bgu.spl.mics.application.messages.DeliveryEvent;
 import bgu.spl.mics.application.messages.GetBookEvent;
 import bgu.spl.mics.application.messages.GetVehicleEvent;
@@ -35,7 +35,7 @@ public class MessageBusImpl implements MessageBus {
 		mailBoxs = new ConcurrentHashMap<>();
 		subscrtion = new ConcurrentHashMap<>();
 
-		subscrtion.put(CheckAvailabilityEvent.class, new ConcurrentLinkedQueue<>());
+		subscrtion.put(CheckAvailabilityEventAndGetPrice.class, new ConcurrentLinkedQueue<>());
 		subscrtion.put(DeliveryEvent.class, new ConcurrentLinkedQueue<>());
 		subscrtion.put(GetBookEvent.class, new ConcurrentLinkedQueue<>());
 		subscrtion.put(GetVehicleEvent.class, new ConcurrentLinkedQueue<>());
