@@ -22,10 +22,9 @@ public class MessageBusImpl implements MessageBus {
 	}
 
 	private ConcurrentHashMap<Class, ConcurrentLinkedQueue<MicroService>> subscrtion;
-	private ConcurrentHashMap<String, MicroService> registers;
+	private ConcurrentHashMap<MicroService, ConcurrentLinkedQueue<Message>> registers;
 	private ConcurrentHashMap<Event, Future> mailBoxs;
-	private ConcurrentLinkedQueue<Event> eventsTosend;
-	
+
 	static public MessageBus getInstance() {
 		return Holder.INSTANCE;
 	}
@@ -48,36 +47,56 @@ public class MessageBusImpl implements MessageBus {
 
 	@Override
 	public <T> void subscribeEvent(Class<? extends Event<T>> type, MicroService m) {
+		if (subscrtion.get(type) == null)
+			System.out.println("cant register to this type of event");
 		subscrtion.get(type).add(m);
 	}
 
 	@Override
 	public void subscribeBroadcast(Class<? extends Broadcast> type, MicroService m) {
-			subscrtion.get(type).add(m);
+		if (subscrtion.get(type) == null)
+			System.out.println("cant register to this type of broadcast");
+		subscrtion.get(type).add(m);
 	}
 
 	@Override
 	public <T> void complete(Event<T> e, T result) {
-		// TODO Auto-generated method stub
-
+		Future<T> f = mailBoxs.remove(e);
+		if (f == null)
+			System.out.println("tryed to resolve a future that dose not exsist");
+		f.resolve(result);
 	}
 
 	@Override
 	public void sendBroadcast(Broadcast b) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public <T> Future<T> sendEvent(Event<T> e) {
-		// TODO Auto-generated method stub
+		ConcurrentLinkedQueue<MicroService> waiting = subscrtion.get(e.getClass());
+		MicroService m = waiting.poll();
+		if (m != null) {
+			if (registers.containsKey(m)) {
+				registers.get(m).add(e);
+				System.out.println("an event has been added to " + m.getName());
+				m.notify();
+			} else {
+				System.out.println("error the waiting micro server dose not exsist");
+			}
+			waiting.add(m);
+			Future<T> newBoxkey = new Future<T>();
+			mailBoxs.put(e, newBoxkey);
+		}
+
 		return null;
 	}
 
 	@Override
 	public void register(MicroService m) {
-		registers.put(m.getName(), m);
-		}
+		if (!registers.containsKey(m))
+			registers.put(m, new ConcurrentLinkedQueue<Message>());
+	}
 
 	@Override
 	public void unregister(MicroService m) {
@@ -87,7 +106,14 @@ public class MessageBusImpl implements MessageBus {
 	@Override
 	public Message awaitMessage(MicroService m) throws InterruptedException {
 		m.wait();
-		return null;
+		System.out.println(m.getName() +" just woke up and is starting to work");
+		ConcurrentLinkedQueue<Message> ToDoList = registers.get(m);
+		Message todoNext = ToDoList.poll();
+		if(todoNext == null) {
+			System.out.println("error: resive null message");
+		m.terminate();
+		}
+		return todoNext;
 	}
 
 }
