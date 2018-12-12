@@ -20,29 +20,24 @@ public class ResourceService extends MicroService {
 	
 	//g
 
-<<<<<<< HEAD
 	public ResourceService(String Myname) {
 		super(Myname);
 		this.ResourcesHolder = ResourcesHolder.getInstance();
 		
-=======
-	public ResourceService(ResourcesHolder holder) {
-		super("ResourceService");
-		this.ResourcesHolder = holder;
-
->>>>>>> branch 'ex2' of https://github.com/ntg7creation/spl_project_group77.git
 		// TODO Implement this
 	}
 
 	@Override
 	protected void initialize() {
 
-		// subscribes to GetVehicleEvent/ Check again this Class
-		subscribeEvent(DeliveryEvent.class, ev -> {
-			// TODO Implement this
+//		this.subscribeEvent(ResourceServiceEvent.class, deliveryMessage-> {
+//			Future<DeliveryVehicle> futureDeliveryVehicle =	this.resourcesHolder.acquireVehicle();
+//			DeliveryVehicle deliveryVehicle = futureDeliveryVehicle.get();
+//
+//			deliveryVehicle.deliver(deliveryMessage.getDeliveryMessage().getAddress(), deliveryMessage.getDeliveryMessage().getDistance());
+//			this.resourcesHolder.releaseVehicle(deliveryVehicle);
+//			
+//		});
 
-			
-			complete(ev, null);
-		});
 	}
 }

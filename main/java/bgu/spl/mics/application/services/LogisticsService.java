@@ -1,17 +1,15 @@
 package bgu.spl.mics.application.services;
 
-import java.util.concurrent.TimeUnit;
-
 import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
-import bgu.spl.mics.application.messages.CheckAvailabilityEvent;
 import bgu.spl.mics.application.messages.DeliveryEvent;
 import bgu.spl.mics.application.messages.GetVehicleEvent;
-import bgu.spl.mics.application.messages.OrderBookEvent;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.DeliveryVehicle;
-import bgu.spl.mics.application.passiveObjects.OrderReceipt;
+import bgu.spl.mics.application.passiveObjects.Inventory;
+import bgu.spl.mics.application.passiveObjects.MoneyRegister;
+import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 
 /**
  * Logistic service in charge of delivering books that have been purchased to

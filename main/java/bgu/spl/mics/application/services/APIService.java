@@ -34,14 +34,7 @@ public class APIService extends MicroService{
 
 	@Override
 	protected void initialize() {
-<<<<<<< HEAD
-		
-		//broadCastTick Only
-=======
-//broadcast
->>>>>>> branch 'ex2' of https://github.com/ntg7creation/spl_project_group77.git
-		// TODO Implement this
-		
+
 	}
 
 }
