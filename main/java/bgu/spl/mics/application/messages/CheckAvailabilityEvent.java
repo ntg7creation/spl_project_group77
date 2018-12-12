@@ -14,8 +14,5 @@ public class CheckAvailabilityEvent implements Event<Integer> {
 		return this.title;
 	}
 
-	public int getPrice(){
-		return this.price;
 
 		}
-	}
