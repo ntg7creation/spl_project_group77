@@ -26,8 +26,8 @@ public abstract class MicroService implements Runnable {
 	private MessageBus bus;
 	private boolean terminated = false;
 	private final String name;
-	private HashMap< Class,Callback> myCallbacks;
-	
+	private HashMap<Class, Callback> myCallbacks;
+
 	/**
 	 * @param name
 	 *            the micro-service name (used mainly for debugging purposes - does
@@ -37,6 +37,7 @@ public abstract class MicroService implements Runnable {
 		bus = MessageBusImpl.getInstance();
 		myCallbacks = new HashMap<>();
 		this.name = name;
+
 	}
 
 	/**
@@ -148,6 +149,7 @@ public abstract class MicroService implements Runnable {
 	 */
 	protected final void terminate() {
 		this.terminated = true;
+		bus.unregister(this);
 	}
 
 	/**
@@ -165,17 +167,19 @@ public abstract class MicroService implements Runnable {
 	@Override
 	public final void run() {
 		initialize();
+		bus.register(this);
 		while (!terminated) {
 			try {
-			Message whatToDO =	bus.awaitMessage(this);
-			myCallbacks.get(whatToDO.getClass()).call(whatToDO);;
+				Message whatToDo = bus.awaitMessage(this);
+				if (whatToDo != null)
+					myCallbacks.get(whatToDo.getClass()).call(whatToDo);
 			} catch (InterruptedException e) {
-				
+
 				e.printStackTrace();
 			}
-			//System.out.println("NOT IMPLEMENTED!!!"); // TODO: you should delete this line :)
+			// System.out.println("NOT IMPLEMENTED!!!"); // TODO: you should delete this
+			// line :)
 		}
 	}
-	
 
 }

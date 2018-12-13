@@ -31,7 +31,6 @@ public class Inventory {
 	public static Inventory getInstance() {
 
 		return Holder.INSTANCE;
-
 	}
 
 	/**
