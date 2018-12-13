@@ -41,9 +41,11 @@ public class ResourcesHolder {
 	 */
 	public Future<DeliveryVehicle> acquireVehicle() {
 
-		DeliveryVehicle vhl = vehicles.remove();
-		Future<DeliveryVehicle> future = new Future<>();
-		future.resolve(vhl);
+		
+		
+//		DeliveryVehicle vhl = vehicles.remove();
+//		Future<DeliveryVehicle> future = new Future<>();
+//		future.resolve(vhl);
 		return null;
 		//TODO: Implement this
 	}
