@@ -1,6 +1,6 @@
 package bgu.spl.mics.application.passiveObjects;
 
-import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
 
 import bgu.spl.mics.Future;
 
@@ -14,8 +14,8 @@ import bgu.spl.mics.Future;
  * You can add ONLY private methods and fields to this class.
  */
 public class ResourcesHolder {
-	private Queue<DeliveryVehicle> vehicles;
-
+	private BlockingQueue<DeliveryVehicle> vehicles;
+	private BlockingQueue<Future<DeliveryVehicle>> WaitingForVehicle;
 
 
 	private ResourcesHolder() {

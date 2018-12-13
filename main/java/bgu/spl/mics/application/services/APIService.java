@@ -25,8 +25,8 @@ public class APIService extends MicroService{
 
     public APIService(Customer customer, HashMap<Integer,Event<String>> booksTicks) {
         super("APIService : " + customer.getId());
-        customer = customer;
-        booksTicks = booksTicks;
+        this.customer = customer;
+        this.order = booksTicks;
     
 
 		// TODO Implement this
@@ -34,6 +34,10 @@ public class APIService extends MicroService{
 
 	@Override
 	protected void initialize() {
+		
+		//subscribe to tick
+	// check if order is ready, if yes make OrderBookEvent
+		//OrderbookEvent get Receipt (println)
 
 	}
 

@@ -29,15 +29,11 @@ public class ResourceService extends MicroService {
 
 	@Override
 	protected void initialize() {
-
-//		this.subscribeEvent(ResourceServiceEvent.class, deliveryMessage-> {
-//			Future<DeliveryVehicle> futureDeliveryVehicle =	this.resourcesHolder.acquireVehicle();
-//			DeliveryVehicle deliveryVehicle = futureDeliveryVehicle.get();
-//
-//			deliveryVehicle.deliver(deliveryMessage.getDeliveryMessage().getAddress(), deliveryMessage.getDeliveryMessage().getDistance());
-//			this.resourcesHolder.releaseVehicle(deliveryVehicle);
-//			
-//		});
+		
+// subscribe to getVehicleEvent
+		// subscribe to ReturnVehicleEvent
+		
+	
 
 	}
 }
