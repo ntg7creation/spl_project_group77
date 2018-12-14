@@ -23,6 +23,7 @@ public class Future<T> {
 	public Future() {
 		result = null;
 		done = false;
+		lock = new Object();
 		
 	}
 
@@ -52,8 +53,13 @@ public class Future<T> {
 	public void resolve(T result) {
 		this.result = result;
 		done = true;
-		lock.notifyAll();
-		this.notifyAll();
+		synchronized (lock) {
+			lock.notifyAll();
+		}
+		synchronized (this) {
+	
+			this.notifyAll();
+		}
 	}
 
 	/**

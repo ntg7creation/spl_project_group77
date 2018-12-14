@@ -40,7 +40,7 @@ public class TimeService extends MicroService {
 			@Override
 			public void run() {
 				time++;
-				System.out.println("time to send broadcast");
+			
 				sendBroadcast(new Tick(time));
 
 			}

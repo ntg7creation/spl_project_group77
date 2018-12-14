@@ -78,10 +78,10 @@ public class MessageBusImpl implements MessageBus {
 			if (m != null) {
 				if (registers.containsKey(m)) {
 					registers.get(m).add(b);
-					//System.out.println("a Broadcast has been added to " + m.getName());
+					// System.out.println("a Broadcast has been added to " + m.getName());
 					synchronized (m) {
 						m.notify();
-					} 
+					}
 				} else {
 					System.out.println("error the waiting micro server dose not exsist");
 				}
@@ -98,7 +98,9 @@ public class MessageBusImpl implements MessageBus {
 			if (registers.containsKey(m)) {
 				registers.get(m).add(e);
 				System.out.println("an event has been added to " + m.getName());
-				m.notify();
+				synchronized (m) {
+					m.notify();
+				}
 				waiting.add(m);
 			} else {
 				System.out.println("error the waiting micro server dose not exsist");
@@ -160,7 +162,7 @@ public class MessageBusImpl implements MessageBus {
 	public Message awaitMessage(MicroService m) throws InterruptedException {
 		if (registers.containsKey(m)) {
 			synchronized (m) {
-				System.out.println(m.getName() + " went to sleep" );
+				System.out.println(m.getName() + " went to sleep");
 				System.out.println();
 				m.wait();
 			}

@@ -51,7 +51,7 @@ public class SellingService extends MicroService {
 					"No Micro-Service has registered to handle CheckAvilabilityAndgetPrice events! The event cannot be processed");
 		}
 
-		return null;
+		return -1;
 	}
 
 	private void buyBook(Integer price, Customer c, OrderReceipt r) {
@@ -100,7 +100,7 @@ public class SellingService extends MicroService {
 		});
 		subscribeBroadcast(Tick.class, ev -> {
 			time = ev.getNewTime();// dont care for double threads
-			System.out.println(time);
+
 			if (time == 999999999) { // TODO Implement this i want to terminate to to change
 				terminate();
 			}

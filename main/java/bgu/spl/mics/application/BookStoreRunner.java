@@ -32,14 +32,18 @@ public class BookStoreRunner {
     	Customer c = new Customer("nata", 208, "somwhere", 10, 1000, 771772);
     	HashMap<Integer,String> list = new HashMap<>();
     	list.put(3, "harry potter");
+    	list.put(4, "parsy Jacson");
     	APIService a1 = new APIService(c, list) ;
     	TimeService T1 = new TimeService("natais clock");
     	
     	
     	Thread ts1 = new Thread(s1);
     	ts1.start();
+    	Thread ta1 = new Thread(a1);
+    	ta1.start();
     	Thread tt1 = new Thread(T1);
     	tt1.start();
+    	
        // e.execute(s1);
         //e.execute(a1);
       // e.execute(T1);
