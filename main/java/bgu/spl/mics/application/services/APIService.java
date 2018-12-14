@@ -1,9 +1,12 @@
 package bgu.spl.mics.application.services;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import bgu.spl.mics.Event;
+import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
+import bgu.spl.mics.application.messages.CheckAvailabilityEventAndGetPriceEvent;
 import bgu.spl.mics.application.messages.OrderBookEvent;
 import bgu.spl.mics.application.messages.Tick;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
@@ -27,7 +30,7 @@ public class APIService extends MicroService {
 	private Customer customer;
 
 	public APIService(Customer customer, HashMap<Integer, String> booksTicks) {
-		super("APIService : " + customer.getId());
+		super("APIService :" + customer.getId());
 		this.customer = customer;
 		order = booksTicks;
 
@@ -36,19 +39,36 @@ public class APIService extends MicroService {
 
 	@Override
 	protected void initialize() {
-		
-		subscribeBroadcast(Tick.class, broad-> { 
-		    Integer hourOfDay = new Integer( broad.getNewTime());
-		    while(order.containsKey(hourOfDay))
-		    {
-		    	String bookName = order.remove(hourOfDay);
-		    	if(bookName == null)
-		    		System.out.println("error in APIService");
-		    	sendEvent(new OrderBookEvent(customer,bookName));
-		    }
+
+		subscribeBroadcast(Tick.class, broad -> {
+			Integer hourOfDay = new Integer(broad.getNewTime());
+			while (order.containsKey(hourOfDay)) {
+				String bookName = order.remove(hourOfDay);
+				OrderReceipt R = orderBook(bookName);
+				customer.addReceipt(R);
+			}
 
 		});
 
+	}
+
+	private OrderReceipt orderBook(String bookName) {
+
+		Future<OrderReceipt> futureObject = sendEvent(new OrderBookEvent(customer, bookName));
+		if (futureObject != null) {
+			OrderReceipt resolved = futureObject.get();
+			if (resolved != null) {
+				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
+				return resolved;
+			} else {
+				System.out.println("Time has elapsed or cant resolved event, no services has resolved the event - terminating");
+			}
+		} else {
+			System.out.println(
+					"No Micro-Service has registered to handle OrderBookEvent events! The event cannot be processed");
+		}
+
+		return null;
 	}
 
 }
