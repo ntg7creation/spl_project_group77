@@ -160,6 +160,8 @@ public class MessageBusImpl implements MessageBus {
 	public Message awaitMessage(MicroService m) throws InterruptedException {
 		if (registers.containsKey(m)) {
 			synchronized (m) {
+				System.out.println(m.getName() + " went to sleep" );
+				System.out.println();
 				m.wait();
 			}
 			// locks.get(m).lockme();

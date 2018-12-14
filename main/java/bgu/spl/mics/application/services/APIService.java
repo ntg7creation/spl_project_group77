@@ -4,9 +4,13 @@ import java.util.HashMap;
 
 import bgu.spl.mics.Event;
 import bgu.spl.mics.MicroService;
+import bgu.spl.mics.application.messages.OrderBookEvent;
+import bgu.spl.mics.application.messages.Tick;
+import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.Inventory;
 import bgu.spl.mics.application.passiveObjects.MoneyRegister;
+import bgu.spl.mics.application.passiveObjects.OrderReceipt;
 import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 
 /**
@@ -33,9 +37,17 @@ public class APIService extends MicroService {
 	@Override
 	protected void initialize() {
 		
-		//subscribe to tick
-	// check if order is ready, if yes make OrderBookEvent
-		//OrderbookEvent get Receipt (println)
+		subscribeBroadcast(Tick.class, broad-> { 
+		    Integer hourOfDay = new Integer( broad.getNewTime());
+		    while(order.containsKey(hourOfDay))
+		    {
+		    	String bookName = order.remove(hourOfDay);
+		    	if(bookName == null)
+		    		System.out.println("error in APIService");
+		    	sendEvent(new OrderBookEvent(customer,bookName));
+		    }
+
+		});
 
 	}
 
