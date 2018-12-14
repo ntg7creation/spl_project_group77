@@ -36,8 +36,10 @@ public class BookStoreRunner {
     	TimeService T1 = new TimeService("natais clock");
     	
     	
-    	Thread t1 = new Thread(s1);
-    	t1.run();
+    	Thread ts1 = new Thread(s1);
+    	ts1.start();
+    	Thread tt1 = new Thread(T1);
+    	tt1.start();
        // e.execute(s1);
         //e.execute(a1);
       // e.execute(T1);

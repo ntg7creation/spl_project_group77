@@ -30,7 +30,7 @@ public class TimeService extends MicroService {
 		super(name);
 		clock = new Timer();
 		time = 0;
-		speed = 0;
+		speed = 1000;
 	}
 
 	@Override
@@ -40,6 +40,7 @@ public class TimeService extends MicroService {
 			@Override
 			public void run() {
 				time++;
+				System.out.println("time to send broadcast");
 				sendBroadcast(new Tick(time));
 
 			}

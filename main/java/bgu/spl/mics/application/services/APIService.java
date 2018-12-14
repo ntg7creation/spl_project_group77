@@ -22,19 +22,10 @@ public class APIService extends MicroService {
 	private HashMap<Integer, String> order;
 	private Customer customer;
 
-<<<<<<< HEAD
-
-    public APIService(Customer customer, HashMap<Integer,Event<String>> booksTicks) {
-        super("APIService : " + customer.getId());
-        this.customer = customer;
-        this.order = booksTicks;
-    
-=======
 	public APIService(Customer customer, HashMap<Integer, String> booksTicks) {
 		super("APIService : " + customer.getId());
-		customer = customer;
-		booksTicks = booksTicks;
->>>>>>> branch 'ex2' of https://github.com/ntg7creation/spl_project_group77.git
+		this.customer = customer;
+		order = booksTicks;
 
 		// TODO Implement this
 	}

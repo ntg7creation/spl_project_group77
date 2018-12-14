@@ -78,9 +78,10 @@ public class MessageBusImpl implements MessageBus {
 			if (m != null) {
 				if (registers.containsKey(m)) {
 					registers.get(m).add(b);
-					System.out.println("a Broadcast has been added to " + m.getName());
-					m.notify();
-					waiting.add(m);
+					//System.out.println("a Broadcast has been added to " + m.getName());
+					synchronized (m) {
+						m.notify();
+					} 
 				} else {
 					System.out.println("error the waiting micro server dose not exsist");
 				}

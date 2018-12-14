@@ -99,6 +99,7 @@ public class SellingService extends MicroService {
 		});
 		subscribeBroadcast(Tick.class, ev -> {
 			time = ev.getNewTime();// dont care for double threads
+			System.out.println(time);
 			if (time == 999999999) { // TODO Implement this i want to terminate to to change
 				terminate();
 			}

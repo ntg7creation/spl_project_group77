@@ -88,7 +88,8 @@ public abstract class MicroService implements Runnable {
 	 *            {@code type} are taken from this micro-service message queue.
 	 */
 	protected final <B extends Broadcast> void subscribeBroadcast(Class<B> type, Callback<B> callback) {
-		// TODO: implement this.
+		bus.subscribeBroadcast(type, this);
+		myCallbacks.put(type, callback);
 	}
 
 	/**
@@ -119,7 +120,7 @@ public abstract class MicroService implements Runnable {
 	 *            The broadcast message to send
 	 */
 	protected final void sendBroadcast(Broadcast b) {
-		// TODO: implement this.
+		bus.sendBroadcast(b);
 	}
 
 	/**
