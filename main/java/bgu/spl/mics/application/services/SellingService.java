@@ -27,6 +27,7 @@ import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
  */
 public class SellingService extends MicroService {
 
+	//test
 	private int time;
 	private MoneyRegister themoney;
 
