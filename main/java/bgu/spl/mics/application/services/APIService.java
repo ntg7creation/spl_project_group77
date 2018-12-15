@@ -45,7 +45,8 @@ public class APIService extends MicroService {
 			while (order.containsKey(hourOfDay)) {
 				String bookName = order.remove(hourOfDay);
 				OrderReceipt R = orderBook(bookName);
-				customer.addReceipt(R);
+				if (R != null)
+					customer.addReceipt(R);
 			}
 
 		});
@@ -55,13 +56,14 @@ public class APIService extends MicroService {
 	private OrderReceipt orderBook(String bookName) {
 
 		Future<OrderReceipt> futureObject = sendEvent(new OrderBookEvent(customer, bookName));
+
 		if (futureObject != null) {
 			OrderReceipt resolved = futureObject.get();
 			if (resolved != null) {
 				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
 				return resolved;
 			} else {
-				System.out.println("Time has elapsed or cant resolved event, no services has resolved the event - terminating");
+			//	System.out.println(this.getName() + ":cant resolved event");
 			}
 		} else {
 			System.out.println(

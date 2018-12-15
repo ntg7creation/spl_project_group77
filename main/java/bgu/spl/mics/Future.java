@@ -15,8 +15,7 @@ public class Future<T> {
 	private T result;
 	private Boolean done;
 	private Object lock;
-	
-	
+
 	/**
 	 * This should be the the only public constructor in this class.
 	 */
@@ -24,7 +23,7 @@ public class Future<T> {
 		result = null;
 		done = false;
 		lock = new Object();
-		
+
 	}
 
 	/**
@@ -37,14 +36,21 @@ public class Future<T> {
 	 *         is available.
 	 * 
 	 */
-	 public T get() {
+	public T get() {
 		try {
-		while (result == null) lock.wait();
-		}catch (Exception e) {
+			// System.out.println(done);
+			while (!done) {// i dont think we need this
+				synchronized (lock) {
+					lock.wait();
+				}
+				// System.out.println(done);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
 			// TODO: handle exception
 		}
-		
-		 return result;
+
+		return result;
 	}
 
 	/**
@@ -57,7 +63,6 @@ public class Future<T> {
 			lock.notifyAll();
 		}
 		synchronized (this) {
-	
 			this.notifyAll();
 		}
 	}
@@ -89,8 +94,10 @@ public class Future<T> {
 
 		if (!done) {
 			try {
-				this.wait(unit.convert(timeout, TimeUnit.MILLISECONDS));
+				synchronized (lock) {
 
+					lock.wait(unit.convert(timeout, TimeUnit.MILLISECONDS));
+				}
 			} catch (InterruptedException e) {
 			}
 		}

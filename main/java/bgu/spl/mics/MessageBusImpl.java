@@ -28,6 +28,7 @@ public class MessageBusImpl implements MessageBus {
 	private ConcurrentHashMap<Event, Future> mailBoxs;
 
 	static public MessageBus getInstance() {
+
 		return Holder.INSTANCE;
 	}
 
@@ -65,10 +66,16 @@ public class MessageBusImpl implements MessageBus {
 
 	@Override
 	public <T> void complete(Event<T> e, T result) {
-		Future<T> f = mailBoxs.remove(e);
+		// System.out.println(mailBoxs);
+	 Future<T> f = mailBoxs.remove(e);
+		// // System.out.println();//TODO find a better fix
+		// System.out.println(f);
+		// if (f == null)
+		// System.out.println("tryed to resolve a future that dose not exsist");
 		if (f == null)
-			System.out.println("tryed to resolve a future that dose not exsist");
+			System.out.println(e);
 		f.resolve(result);
+
 	}
 
 	@Override
@@ -97,17 +104,18 @@ public class MessageBusImpl implements MessageBus {
 		MicroService m = waiting.poll();
 		if (m != null) {
 			if (registers.containsKey(m)) {
+				newBoxkey = new Future<T>();
+				mailBoxs.put(e, newBoxkey);
 				registers.get(m).add(e);
-				System.out.println("an event has been added to " + m.getName());
+				// System.out.println("an event has been added to " + m.getName());
 				synchronized (m) {
 					m.notify();
 				}
 				waiting.add(m);
 			} else {
-				System.out.println("error the waiting micro server dose not exsist");
+				System.out.println("ERROR!!!! the waiting micro server dose not exsist");
 			}
-			newBoxkey = new Future<T>();
-			mailBoxs.put(e, newBoxkey);
+
 		}
 
 		return newBoxkey;
@@ -141,7 +149,7 @@ public class MessageBusImpl implements MessageBus {
 					if (micro != null) {
 						if (registers.containsKey(micro)) {
 							registers.get(micro).add(toSend);
-							System.out.println("an event has been added to " + micro.getName());
+							// System.out.println("an event has been added to " + micro.getName());
 							micro.notify();
 							waiting.add(micro);
 						} else {
@@ -163,12 +171,12 @@ public class MessageBusImpl implements MessageBus {
 	public Message awaitMessage(MicroService m) throws InterruptedException {
 		if (registers.containsKey(m)) {
 			synchronized (m) {
-				System.out.println(m.getName() + " went to sleep");
-				System.out.println();
+				// System.out.println(m.getName() + " went to sleep");
+				// System.out.println();
 				m.wait();
 			}
 			// locks.get(m).lockme();
-			System.out.println(m.getName() + " just woke up and is starting to work");
+			// System.out.println(m.getName() + " just woke up and is starting to work");
 			ConcurrentLinkedQueue<Message> ToDoList = registers.get(m);
 			Message todoNext = ToDoList.poll();
 			if (todoNext == null) {
