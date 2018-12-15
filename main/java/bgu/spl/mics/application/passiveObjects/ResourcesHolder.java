@@ -1,6 +1,5 @@
 package bgu.spl.mics.application.passiveObjects;
-
-import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import bgu.spl.mics.Future;
 
@@ -14,11 +13,13 @@ import bgu.spl.mics.Future;
  * You can add ONLY private methods and fields to this class.
  */
 public class ResourcesHolder {
-	private BlockingQueue<DeliveryVehicle> vehicles;
-	private BlockingQueue<Future<DeliveryVehicle>> WaitingForVehicle;
+	private ConcurrentLinkedQueue<DeliveryVehicle> vehiclesPool;
+	private ConcurrentLinkedQueue<Future<DeliveryVehicle>> WaitingForVehicles;
 
 
 	private ResourcesHolder() {
+		this.vehiclesPool = new ConcurrentLinkedQueue<>();
+		this.WaitingForVehicles = new ConcurrentLinkedQueue<>();
 	}
 	private static class Holder {
 		private static final ResourcesHolder INSTANCE = new ResourcesHolder();
@@ -29,6 +30,7 @@ public class ResourcesHolder {
 	 */
 	public static ResourcesHolder getInstance() {
 		return Holder.INSTANCE;
+
 
 	}
 
@@ -41,13 +43,14 @@ public class ResourcesHolder {
 	 */
 	public Future<DeliveryVehicle> acquireVehicle() {
 
-		
-		
-//		DeliveryVehicle vhl = vehicles.remove();
-//		Future<DeliveryVehicle> future = new Future<>();
-//		future.resolve(vhl);
-		return null;
-		//TODO: Implement this
+		Future<DeliveryVehicle> futureVehicle=new Future<>();
+		DeliveryVehicle incomingVehicle = vehiclesPool.poll();
+		if(incomingVehicle != null){
+			futureVehicle.resolve(incomingVehicle);
+		}else{
+			WaitingForVehicles.add(futureVehicle);
+		}
+		return futureVehicle;
 	}
 
 	/**
@@ -57,8 +60,14 @@ public class ResourcesHolder {
 	 * @param vehicle	{@link DeliveryVehicle} to be released.
 	 */
 	public void releaseVehicle(DeliveryVehicle vehicle) {
-		//TODO: Implement this
+		Future <DeliveryVehicle> nextVehicle = WaitingForVehicles.poll();
+		if (nextVehicle == null) {
+			vehiclesPool.add(vehicle);
+		} else {
+			nextVehicle.resolve(vehicle);
+		}
 	}
+
 
 	/**
 	 * Receives a collection of vehicles and stores them.
@@ -66,7 +75,11 @@ public class ResourcesHolder {
 	 * @param vehicles	Array of {@link DeliveryVehicle} instances to store.
 	 */
 	public void load(DeliveryVehicle[] vehicles) {
-		//TODO: Implement this
+		int j=0;
+		while (j<vehicles.length);
+		vehiclesPool.add(vehicles[j]);
+		j=j++;
 	}
-
 }
+
+
