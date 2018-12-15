@@ -18,14 +18,15 @@ public class BookStoreRunner {
     public static void main(String[] args) {
     	//test
     	//code
-    	for (int i = 0; i < 1; i++) {
-    		test1();	
-		}
-    	TimeService T1 = new TimeService("natais clock");
-    	Thread tt1 = new Thread(T1);
-    	tt1.start();
-    	System.out.println("the timers started");
-    	
+//    	for (int i = 0; i < 1; i++) {
+//    		test1();	
+//		}
+//    	TimeService T1 = new TimeService("natais clock");
+//    	Thread tt1 = new Thread(T1);
+//    	tt1.start();
+//    	System.out.println("the timers started");
+//    	
+    	test2();
     }
     
     
