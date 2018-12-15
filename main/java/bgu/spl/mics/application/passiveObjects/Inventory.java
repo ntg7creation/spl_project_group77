@@ -13,12 +13,14 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Inventory {
 
-	//static private Inventory TheInventory;
-	private BookInventoryInfo[] inventory;
-	private static ConcurrentHashMap<String,BookInventoryInfo> Theinventory;
+	private ConcurrentHashMap <String,Integer> amount;
+	private ConcurrentHashMap <String,Integer> price;
 
 
 	private Inventory() {
+		ConcurrentHashMap <String,Integer> amount = new ConcurrentHashMap <>();
+		ConcurrentHashMap <String,Integer> price = new ConcurrentHashMap <>();
+
 	}
 
 	private static class Holder {
@@ -43,9 +45,13 @@ public class Inventory {
 	 *            the inventory.
 	 */
 	public void load(BookInventoryInfo[] inventory) {
-		this.inventory = inventory;
-		for(int i=0;i<inventory.length;i++)
-			Theinventory.put(inventory[i].getBookTitle(), inventory[i]);
+		ConcurrentHashMap <String,Integer> amount = new ConcurrentHashMap <>();
+		ConcurrentHashMap <String,Integer> price = new ConcurrentHashMap <>();
+
+		for(int i = 0 ; i < inventory.length ; i++){
+			price.put(inventory[i].getBookTitle() , inventory[i].getPrice());
+			amount.put(inventory[i].getBookTitle() , inventory[i].getAmountInInventory());
+		}
 
 	}
 
@@ -60,16 +66,27 @@ public class Inventory {
 	 *         should reduce by one the number of books of the desired type.
 	 */
 	public OrderResult take(String book) {
-		OrderResult result = OrderResult.DontHaveBook;
-		for (BookInventoryInfo bookInventoryInfo : inventory) {
-			if (bookInventoryInfo.getBookTitle().equals(book)) {
-				result = OrderResult.OutOfStock;
-				if (bookInventoryInfo.removeBooks(1)) {
+		Integer count = amount.get(book);
+		if (count != null) {
+			synchronized (book) {
+				if (count > 0) {
 					return OrderResult.Success;
 				}
+				//count= count- 1;
 			}
 		}
-		return result;
+		return OrderResult.OutOfStock;
+		
+		//		OrderResult result = OrderResult.DontHaveBook;
+		//		for (BookInventoryInfo bookInventoryInfo : inventory) {
+		//			if (bookInventoryInfo.getBookTitle().equals(book)) {
+		//				result = OrderResult.OutOfStock;
+		//				if (bookInventoryInfo.removeBooks(1)) {
+		//					return OrderResult.Success;
+		//				}
+		//			}
+		//		}
+		//		return result;
 	}
 
 	/**
@@ -81,15 +98,26 @@ public class Inventory {
 	 * @return the price of the book if it is available, -1 otherwise.
 	 */
 	public int checkAvailabiltyAndGetPrice(String book) {
-		for (BookInventoryInfo bookInventoryInfo : inventory) {
-			if (bookInventoryInfo.getBookTitle().equals(book)) {
-				if (bookInventoryInfo.getAmountInInventory() > 0) {
-					return bookInventoryInfo.getPrice();
-				}
-			}
-		}
-		return -1;
+		
+        Integer count = amount.get(book);
+        if (count != null) {
+            synchronized (book) {
+                if (count> 0)
+                    return price.get(book);
+            }
+        }
+        return -1;
 	}
+	
+//		for (BookInventoryInfo bookInventoryInfo : inventory) {
+//			if (bookInventoryInfo.getBookTitle().equals(book)) {
+//				if (bookInventoryInfo.getAmountInInventory() > 0) {
+//					return bookInventoryInfo.getPrice();
+//				}
+//			}
+//		}
+//		return -1;
+//	}
 
 	/**
 	 * 
@@ -102,12 +130,24 @@ public class Inventory {
 	 * output.
 	 */
 	public void printInventoryToFile(String filename) {
-		synchronized (Theinventory){
-			ConcurrentHashMap<String, Integer> booksHashMap = new ConcurrentHashMap<>();
-			for(BookInventoryInfo bookInfo: inventory){
-				booksHashMap.put(bookInfo.getBookTitle(), bookInfo.getAmountInInventory());
-// need to complete
-	}
+		
+//		ConcurrentHashMap <String,Integer> inventoryToFile = new ConcurrentHashMap <>();
+//		for (BookInventoryInfo book : book) {
+//			String name = book.getBookTitle();
+//			Integer amount = book.getAmountInInventory();
+//			inventoryToFile.put(name,amount);
+//		}
+//		filePrinter.printToFile(inventoryToFile,filename);
+
+		
+		
+		
+//		synchronized (Theinventory){
+//			ConcurrentHashMap<String, Integer> booksHashMap = new ConcurrentHashMap<>();
+//			for(BookInventoryInfo bookInfo: inventory){
+//				booksHashMap.put(bookInfo.getBookTitle(), bookInfo.getAmountInInventory());
+//				// need to complete
+//			}
 		}
 	}
-}
+
