@@ -3,6 +3,7 @@ package bgu.spl.mics.application.services;
 import bgu.spl.mics.MicroService;
 import bgu.spl.mics.application.messages.CheckAvailabilityEventAndGetPriceEvent;
 import bgu.spl.mics.application.messages.GetBookEvent;
+import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Inventory;
 import bgu.spl.mics.application.passiveObjects.MoneyRegister;
 import bgu.spl.mics.application.passiveObjects.OrderResult;
@@ -39,6 +40,7 @@ public class InventoryService extends MicroService {
 		//subscribe to getBook
 	subscribeEvent(GetBookEvent.class, event -> {
 			OrderResult orderRe =inventory.take(event.GetName());
+			BookInventoryInfo output = new BookInventoryInfo(getBookTitle(), 1, this.price)
 
 				 
 			 
