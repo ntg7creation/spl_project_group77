@@ -27,7 +27,7 @@ import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
  */
 public class SellingService extends MicroService {
 
-	//test
+	// test
 	private int time;
 	private MoneyRegister themoney;
 
@@ -44,11 +44,10 @@ public class SellingService extends MicroService {
 				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
 				return resolved;
 			} else {
-				System.out.println("Time has elapsed, no services has resolved the event - terminating");
+				System.out.println(this.getName() + ":cant resolved the event");
 			}
 		} else {
-			System.out.println(
-					"No Micro-Service has registered to handle CheckAvilabilityAndgetPrice events! The event cannot be processed");
+		//	System.out.println(		"No Micro-Service has registered to handle CheckAvilabilityAndgetPrice events! The event cannot be processed");
 		}
 
 		return -1;
@@ -77,10 +76,12 @@ public class SellingService extends MicroService {
 
 	@Override
 	protected void initialize() {
-		System.out.println("Event Handler " + getName() + " started");
+	//	System.out.println("Event Handler " + getName() + " started");
 
 		subscribeEvent(OrderBookEvent.class, ev -> { // so this is the call function of the ev event that is being sent
-			System.out.println("Event Handler " + getName() + " got a new event "); // TODO delete
+			// System.out.println("Event Handler " + getName() + " got a new event "); //
+			// TODO delete
+			OrderReceipt output = null;
 			Customer c = ev.getCustomer();
 			OrderReceipt receipt = new OrderReceipt(8, getName(), c.getId(), ev.getbookName(), time);
 			Integer price = AskAvilabilityAndGetPrice();
@@ -92,10 +93,11 @@ public class SellingService extends MicroService {
 					buyBook(price, ev.getCustomer(), receipt);
 					receipt.setIssuedTick(time);
 					sendBook(book, c);
+					output = receipt;
 
 				}
 			}
-			complete(ev, receipt);
+			complete(ev, output);
 
 		});
 		subscribeBroadcast(Tick.class, ev -> {

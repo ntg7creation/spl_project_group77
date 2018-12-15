@@ -4,6 +4,7 @@ import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
 import bgu.spl.mics.application.messages.DeliveryEvent;
 import bgu.spl.mics.application.messages.GetVehicleEvent;
+import bgu.spl.mics.application.messages.ReturnVehicleEnvent;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.DeliveryVehicle;
@@ -32,15 +33,17 @@ public class LogisticsService extends MicroService {
 		System.out.println("Event Handler " + getName() + " started");
 
 		subscribeEvent(DeliveryEvent.class, ev -> { // so this is the call function of the ev event that is being sent
-			System.out.println("Event Handler " + getName() + " got a new event "); // TODO delete
+			//System.out.println("Event Handler " + getName() + " got a new event "); // TODO delete
 			Customer c = ev.getCustomer();
 			BookInventoryInfo book = ev.getBook();
 			DeliveryVehicle v = getVehicle();
 			if (v != null)
 				v.deliver(c.getAddress(), c.getDistance());
+			sendEvent(new ReturnVehicleEnvent(v));
 			complete(ev, null);
 
 		});
+
 	}
 
 	private DeliveryVehicle getVehicle() {

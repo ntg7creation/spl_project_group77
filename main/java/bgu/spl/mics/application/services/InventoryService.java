@@ -37,11 +37,18 @@ public class InventoryService extends MicroService {
 		int getPrice = inventory.checkAvailabiltyAndGetPrice(event.getTitle());
 		complete(event, getPrice);
 		 });
+		 
 		//subscribe to getBook
 	subscribeEvent(GetBookEvent.class, event -> {
+<<<<<<< HEAD
 			OrderResult orderRe =inventory.take(event.GetName());
 			BookInventoryInfo output = new BookInventoryInfo(getBookTitle(), 1, this.price)
 
+=======
+			//OrderResult orderRe =inventory.take(event.GetName());
+			BookInventoryInfo outputToComple = new BookInventoryInfo("somthing", 1, 999999);
+			complete(event, outputToComple);
+>>>>>>> branch 'ex2' of https://github.com/ntg7creation/spl_project_group77.git
 				 
 			 
 

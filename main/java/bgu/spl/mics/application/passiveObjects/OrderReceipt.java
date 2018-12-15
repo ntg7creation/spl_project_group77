@@ -98,4 +98,10 @@ public class OrderReceipt {
 	public void setProcessTick(int p) {
 		process_tick = p;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "[order:" +order_id + ",orderTick:" +order_tick+",seller:"+seller+",soldAt:"+sold_tick+"]" ;
+	}
 }
