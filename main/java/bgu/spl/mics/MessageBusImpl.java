@@ -8,7 +8,7 @@ import bgu.spl.mics.application.messages.DeliveryEvent;
 import bgu.spl.mics.application.messages.GetBookEvent;
 import bgu.spl.mics.application.messages.GetVehicleEvent;
 import bgu.spl.mics.application.messages.OrderBookEvent;
-import bgu.spl.mics.application.messages.ReturnVehicleEnvent;
+import bgu.spl.mics.application.messages.ReturnVehicleEvent;
 import bgu.spl.mics.application.messages.Tick;
 
 /**
@@ -45,7 +45,7 @@ public class MessageBusImpl implements MessageBus {
 		subscrtion.put(GetVehicleEvent.class, new ConcurrentLinkedQueue<>());
 		subscrtion.put(OrderBookEvent.class, new ConcurrentLinkedQueue<>());
 		subscrtion.put(Tick.class, new ConcurrentLinkedQueue<>());
-		subscrtion.put(ReturnVehicleEnvent.class, new ConcurrentLinkedQueue<>());
+		subscrtion.put(ReturnVehicleEvent.class, new ConcurrentLinkedQueue<>());
 
 		// TODO Auto-generated constructor stub
 	}
@@ -136,7 +136,7 @@ public class MessageBusImpl implements MessageBus {
 		Unsubscribe(GetBookEvent.class, m);
 		Unsubscribe(GetVehicleEvent.class, m);
 		Unsubscribe(OrderBookEvent.class, m);
-		Unsubscribe(ReturnVehicleEnvent.class, m);
+		Unsubscribe(ReturnVehicleEvent.class, m);
 		Unsubscribe(Tick.class, m);
 
 		if (registers.containsKey(m)) {

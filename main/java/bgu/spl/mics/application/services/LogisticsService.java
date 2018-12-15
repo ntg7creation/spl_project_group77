@@ -4,7 +4,7 @@ import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
 import bgu.spl.mics.application.messages.DeliveryEvent;
 import bgu.spl.mics.application.messages.GetVehicleEvent;
-import bgu.spl.mics.application.messages.ReturnVehicleEnvent;
+import bgu.spl.mics.application.messages.ReturnVehicleEvent;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.DeliveryVehicle;
@@ -39,7 +39,7 @@ public class LogisticsService extends MicroService {
 			DeliveryVehicle v = getVehicle();
 			if (v != null)
 				v.deliver(c.getAddress(), c.getDistance());
-			sendEvent(new ReturnVehicleEnvent(v));
+			sendEvent(new ReturnVehicleEvent(v));
 			complete(ev, null);
 
 		});
