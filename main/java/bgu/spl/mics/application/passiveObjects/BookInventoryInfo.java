@@ -7,18 +7,17 @@ package bgu.spl.mics.application.passiveObjects;
  * You may add fields and methods to this class as you see fit (including public methods).
  */
 public class BookInventoryInfo {
-	private String title;
+	private String bookTitle;
 	private int amount;
 	private int price;
 
 	
 	public BookInventoryInfo (String title, int amount, int price) {
-		this.title= title;
+		this.bookTitle= title;
 		this.amount=amount;
 		this.price=price;
 		
 	}
-	
 	
 	public void addBooks(int x) {
 		amount+= x;
@@ -40,7 +39,7 @@ public class BookInventoryInfo {
      */
 	public String getBookTitle() {
 		
-		return title;
+		return bookTitle;
 
 	}
 
@@ -67,7 +66,7 @@ public class BookInventoryInfo {
 	@Override
 	public String toString()
 	{
-		return "[title:" +title + ",amount:" +amount+",price:"+price+"]" ;
+		return "[title:" +bookTitle + ",amount:" +amount+",price:"+price+"]" ;
 	}
 	
 	

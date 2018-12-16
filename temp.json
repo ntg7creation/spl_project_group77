@@ -1,20 +1,34 @@
-[
-	{
-		"bookTitle": "The Hunger Games",
-		"amount": 90,
-		"price": 102,
-		"job": "Teacher"
-	},
+{
+	"initialInventory": 
+	[
+		{
+			"bookTitle": "Harry Poter",
+			"amount": 10,
+			"price": 90
+		},
 
-	{
-		"name": "Mark",
-		"city": "Oslo",
-		"cars": 
-		[
-			"VW",
-			"Toyata"
-		],
+		{
+			"bookTitle": "The Hunger Games",
+			"amount": 90,
+			"price": 102
+		}
+	],
 
-		 "job": "Doctor"
-	}
-]
+	"initialResources": 
+	[
+		{
+			"vehicles": 
+			[
+				{
+					"license": 123483,
+					"speed": 2
+				},
+
+				{
+					"license": 999994,
+					"speed": 4
+				}
+			]
+		}
+	]
+}

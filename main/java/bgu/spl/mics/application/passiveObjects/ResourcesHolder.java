@@ -14,11 +14,11 @@ import bgu.spl.mics.Future;
  * You can add ONLY private methods and fields to this class.
  */
 public class ResourcesHolder {
-	private ConcurrentLinkedQueue<DeliveryVehicle> vehiclesPool;
+	private ConcurrentLinkedQueue<DeliveryVehicle> vehicles;
 	private ConcurrentLinkedQueue<Future<DeliveryVehicle>> WaitingForVehicles;
 
 	private ResourcesHolder() {
-		this.vehiclesPool = new ConcurrentLinkedQueue<>();
+		this.vehicles = new ConcurrentLinkedQueue<>();
 		this.WaitingForVehicles = new ConcurrentLinkedQueue<>();
 
 	}
@@ -47,7 +47,7 @@ public class ResourcesHolder {
 
 		Future<DeliveryVehicle> futureVehicle = new Future<>();
 
-			DeliveryVehicle incomingVehicle = vehiclesPool.poll();
+			DeliveryVehicle incomingVehicle = vehicles.poll();
 			if (incomingVehicle != null) {
 				futureVehicle.resolve(incomingVehicle);
 			} else {
@@ -70,7 +70,7 @@ public class ResourcesHolder {
 
 			Future<DeliveryVehicle> nextVehicle = WaitingForVehicles.poll();
 			if (nextVehicle == null) {
-				vehiclesPool.add(vehicle);
+				vehicles.add(vehicle);
 			} else {
 			//	System.out.println("give vhicle to the waiting guy");
 				nextVehicle.resolve(vehicle);
@@ -91,7 +91,7 @@ public class ResourcesHolder {
 		// vehiclesPool.add(vehicles[j]);
 		// j = j++;
 		for (int i = 0; i < vehicles.length; i++) {
-			vehiclesPool.add(vehicles[i]);
+			this.vehicles.add(vehicles[i]);
 		}
 	}
 }

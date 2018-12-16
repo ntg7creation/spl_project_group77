@@ -1,54 +1,39 @@
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.util.HashMap;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.google.gson.Gson;
+
+import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
+import bgu.spl.mics.application.passiveObjects.DeliveryVehicle;
+import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
+import jsonclass.storeObjects;
 
 class testfile {
 
-   public static void main(String[] args){
-	   JSONParser parser = new JSONParser();
-	      String s = "[0,{\"1\":{\"2\":{\"3\":{\"4\":[5,{\"6\":7}]}}}}]";
-			
-	      try{
-	         Object obj = parser.parse(s);
-	         JSONArray array = (JSONArray)obj;
-				
-	         System.out.println("The 2nd element of array");
-	         System.out.println(array.get(1));
-	         System.out.println();
+	public static void main(String[] args) {
+		Gson gson = new Gson();
 
-	         JSONObject obj2 = (JSONObject)array.get(1);
-	         System.out.println("Field \"1\"");
-	         System.out.println(obj2.get("1"));    
+		try (Reader reader = new FileReader("C:\\Users\\Lenovo\\git\\spl_project_group77\\temp.json")) {
 
-	         s = "{}";
-	         obj = parser.parse(s);
-	         System.out.println(obj);
+			// Convert JSON to Java Object
+			storeObjects staff = gson.fromJson(reader, storeObjects.class);
+			// for (DeliveryVehicle s : staff) {
+			// System.out.println(s.getLicense());
+			// System.out.println(s.getSpeed());
+			// }
 
-	         s = "[5,]";
-	         obj = parser.parse(s);
-	         System.out.println(obj);
+			// Convert JSON to JsonElement, and later to String
+			/*
+			 * JsonElement json = gson.fromJson(reader, JsonElement.class); String
+			 * jsonInString = gson.toJson(json); System.out.println(jsonInString);
+			 */
 
-	         s = "[5,,2]";
-	         obj = parser.parse(s);
-	         System.out.println(obj);
-	      }catch(ParseException pe){
-			
-	        //System.out.println("position: " + pe.getPosition());
-	         System.out.println(pe);
-	      }
-	      System.out.println();
-	      System.out.println();
-	      try {
-			JSONArray a = (JSONArray) parser.parse(new FileReader("C:\\Users\\Lenovo\\git\\spl_project_group77\\temp.json"));
-			System.out.println(a.get(0));
-			
-		} catch (IOException | ParseException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-   }
+
+	}
+
 }
