@@ -51,7 +51,6 @@ public class ResourcesHolder {
 			if (incomingVehicle != null) {
 				futureVehicle.resolve(incomingVehicle);
 			} else {
-		//		System.out.println("someoneIsWaiting for vehicle");
 				WaitingForVehicles.add(futureVehicle);
 			}
 			return futureVehicle;
@@ -72,7 +71,6 @@ public class ResourcesHolder {
 			if (nextVehicle == null) {
 				vehiclesPool.add(vehicle);
 			} else {
-			//	System.out.println("give vhicle to the waiting guy");
 				nextVehicle.resolve(vehicle);
 			}
 		
