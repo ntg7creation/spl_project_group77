@@ -38,11 +38,12 @@ public class ResourceService extends MicroService {
 
 		subscribeEvent(GetVehicleEvent.class, ev -> {
 			Future<DeliveryVehicle> future = Resourcesholder.acquireVehicle();
-			if (future != null)
-				complete(ev, future.get());
-			else
-				complete(ev, null);
-
+//			Future <Future<DeliveryVehicle>> DoubleFuture = new Future 
+//			if (future != null)
+//				complete(ev, future.get());
+//			else
+//				complete(ev, null);
+			complete(ev, future);
 		});
 
 		// subscribe to ReturnVehicleEvent

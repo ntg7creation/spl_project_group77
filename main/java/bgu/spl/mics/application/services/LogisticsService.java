@@ -49,21 +49,37 @@ public class LogisticsService extends MicroService {
 	}
 
 	private DeliveryVehicle getVehicle() {
-		Future<DeliveryVehicle> futureObject = sendEvent(new GetVehicleEvent());
-		if (futureObject != null) {
-			System.out.println("waiting for vhicletoget from future");
-			DeliveryVehicle resolved = futureObject.get();
-			if (resolved != null) {
-				System.out.println(this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
-				return resolved;
-			} else {
-				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
-			}
-		} else {
-			System.out.println(
-					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
-		}
+//
+//		Future<DeliveryVehicle> futureObject = sendEvent(new GetVehicleEvent());
+//		if (futureObject != null) {
+//			System.out.println("waiting for vhicletoget from future");
+//			DeliveryVehicle resolved = futureObject.get();
+//			if (resolved != null) {
+//				System.out.println(this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
+//				return resolved;
+//			} else {
+//				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
+//			}
+//		} else {
+//			System.out.println(
+//					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
+//		}
 
+
+//		Future<DeliveryVehicle> futureObject = sendEvent(new GetVehicleEvent());
+//		if (futureObject != null) {
+//			DeliveryVehicle resolved = futureObject.get();
+//			if (resolved != null) {
+//				System.out.println(this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
+//				return resolved;
+//			} else {
+//				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
+//			}
+//		} else {
+//			System.out.println(
+//					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
+//		}
+//
 		return null;
 	}
 
