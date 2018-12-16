@@ -79,11 +79,11 @@ public class Customer {
 	 * 
 	 * @return Amount of money left.
 	 */
-	public int getAvailableCreditAmount() {
+	synchronized public int getAvailableCreditAmount() {
 		return credit;
 	}
 
-	public Boolean removeCredit(int x) {
+	synchronized public Boolean removeCredit(int x) {
 		if (credit < x)
 			return false;
 		credit -= x;

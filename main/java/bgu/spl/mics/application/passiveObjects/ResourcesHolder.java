@@ -16,12 +16,11 @@ import bgu.spl.mics.Future;
 public class ResourcesHolder {
 	private ConcurrentLinkedQueue<DeliveryVehicle> vehiclesPool;
 	private ConcurrentLinkedQueue<Future<DeliveryVehicle>> WaitingForVehicles;
-	private Object waitingLock;
 
 	private ResourcesHolder() {
 		this.vehiclesPool = new ConcurrentLinkedQueue<>();
 		this.WaitingForVehicles = new ConcurrentLinkedQueue<>();
-		waitingLock = new Object();
+
 	}
 
 	private static class Holder {
@@ -47,17 +46,16 @@ public class ResourcesHolder {
 	public Future<DeliveryVehicle> acquireVehicle() {
 
 		Future<DeliveryVehicle> futureVehicle = new Future<>();
-		synchronized (waitingLock) {
 
 			DeliveryVehicle incomingVehicle = vehiclesPool.poll();
 			if (incomingVehicle != null) {
 				futureVehicle.resolve(incomingVehicle);
 			} else {
-				System.out.println("someoneIsWaiting for vehicle");
+		//		System.out.println("someoneIsWaiting for vehicle");
 				WaitingForVehicles.add(futureVehicle);
 			}
 			return futureVehicle;
-		}
+		
 	}
 
 	/**
@@ -69,16 +67,15 @@ public class ResourcesHolder {
 	 *            {@link DeliveryVehicle} to be released.
 	 */
 	public void releaseVehicle(DeliveryVehicle vehicle) {
-		synchronized (waitingLock) {
 
 			Future<DeliveryVehicle> nextVehicle = WaitingForVehicles.poll();
 			if (nextVehicle == null) {
 				vehiclesPool.add(vehicle);
 			} else {
-				System.out.println("give vhicle to the waiting guy");
+			//	System.out.println("give vhicle to the waiting guy");
 				nextVehicle.resolve(vehicle);
 			}
-		}
+		
 	}
 
 	/**

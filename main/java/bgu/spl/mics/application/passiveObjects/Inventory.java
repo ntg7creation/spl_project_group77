@@ -45,8 +45,9 @@ public class Inventory {
 	 * store inventory.
 	 * <p>
 	 * 
-	 * @param inventory Data structure containing all data necessary for
-	 *                  initialization of the inventory.
+	 * @param inventory
+	 *            Data structure containing all data necessary for initialization of
+	 *            the inventory.
 	 */
 	public void load(BookInventoryInfo[] inventory) {
 		// ConcurrentHashMap <String,Integer> amount = new ConcurrentHashMap <>();
@@ -63,7 +64,8 @@ public class Inventory {
 	 * Attempts to take one book from the store.
 	 * <p>
 	 * 
-	 * @param book Name of the book to take from the store
+	 * @param book
+	 *            Name of the book to take from the store
 	 * @return an {@link Enum} with options NOT_IN_STOCK and SUCCESSFULLY_TAKEN. The
 	 *         first should not change the state of the inventory while the second
 	 *         should reduce by one the number of books of the desired type.
@@ -96,7 +98,8 @@ public class Inventory {
 	 * Checks if a certain book is available in the inventory.
 	 * <p>
 	 * 
-	 * @param book Name of the book.
+	 * @param book
+	 *            Name of the book.
 	 * @return the price of the book if it is available, -1 otherwise.
 	 */
 	public int checkAvailabiltyAndGetPrice(String book) {
@@ -124,18 +127,15 @@ public class Inventory {
 	public void printInventoryToFile(String filename) {
 
 		try {
-				FileOutputStream fileOut = new FileOutputStream(filename);
-				ObjectOutputStream out = new ObjectOutputStream(fileOut);
-				out.writeObject(amount);
-				out.close();
-				fileOut.close();
-				System.out.println("Data is saved in " + filename);
-			} catch (IOException i) {
-				i.printStackTrace();
+			FileOutputStream fileOut = new FileOutputStream(filename);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(amount);
+			out.close();
+			fileOut.close();
+			System.out.println("Data is saved in " + filename);
+		} catch (IOException i) {
+			i.printStackTrace();
 
-
-
-
-			}
 		}
+	}
 }

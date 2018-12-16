@@ -38,11 +38,9 @@ public class LogisticsService extends MicroService {
 			Customer c = ev.getCustomer();
 			BookInventoryInfo book = ev.getBook();
 			DeliveryVehicle deliveryVehilce = openBox(getVehicle());
-			if (deliveryVehilce != null) {
-				System.out.println("vhicle need to start driving");
-
+			if (deliveryVehilce != null)
 				deliveryVehilce.deliver(c.getAddress(), c.getDistance());
-			}
+
 			sendEvent(new ReturnVehicleEvent(deliveryVehilce));
 			complete(ev, true);
 
@@ -54,18 +52,21 @@ public class LogisticsService extends MicroService {
 
 		Future<Future<DeliveryVehicle>> futureObject = sendEvent(new GetVehicleEvent());
 		if (futureObject != null) {
-			System.out.println("waiting for vhicletoget from future");
+			// System.out.println("waiting for vhicletoget from future");
 			Future<DeliveryVehicle> resolved = futureObject.get();
 			if (resolved != null) {
-				System.out.println(
-						this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
+				// System.out.println(
+				// this.getName() + " processing the event, its result is \"" + resolved + "\" -
+				// success");
 				return resolved;
 			} else {
-				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
+				// System.out.println("the vehicleService failed to fech me a vehicle"); //
+				// shold never happen
 			}
 		} else {
-			System.out.println(
-					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
+			// System.out.println(
+			// "No Micro-Service has registered to handle GetVehicleEvent events! The event
+			// cannot be processed");
 		}
 
 		return null;
@@ -76,15 +77,18 @@ public class LogisticsService extends MicroService {
 		if (futureObject != null) {
 			DeliveryVehicle resolved = futureObject.get();
 			if (resolved != null) {
-				System.out.println(
-						this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
+				// System.out.println(
+				// this.getName() + " processing the event, its result is \"" + resolved + "\" -
+				// success");
 				return resolved;
 			} else {
-				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
+				// System.out.println("the vehicleService failed to fech me a vehicle"); //
+				// shold never happen
 			}
 		} else {
-			System.out.println(
-					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
+			// System.out.println(
+			// "No Micro-Service has registered to handle GetVehicleEvent events! The event
+			// cannot be processed");
 		}
 
 		return null;
