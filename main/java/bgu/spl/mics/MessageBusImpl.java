@@ -47,7 +47,7 @@ public class MessageBusImpl implements MessageBus {
 		subscription.put(Tick.class, new ConcurrentLinkedQueue<>());
 		subscription.put(ReturnVehicleEvent.class, new ConcurrentLinkedQueue<>());
 
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class MessageBusImpl implements MessageBus {
 		// // System.out.println();//TODO find a better fix
 		// System.out.println(f);
 		// if (f == null)
-		// System.out.println("tryed to resolve a future that dose not exsist");
+		// System.out.println("try to resolve a future that dose not exist");
 		if (f == null)
 			System.out.println(e);
 		f.resolve(result);
@@ -153,7 +153,7 @@ public class MessageBusImpl implements MessageBus {
 							micro.notify();
 							waiting.add(micro);
 						} else {
-							System.out.println("error the waiting micro server dose not exsist");
+							System.out.println("error the waiting micro server dose not exist");
 						}
 
 					}
