@@ -23,7 +23,7 @@ public class MessageBusImpl implements MessageBus {
 	}
 
 	private ConcurrentHashMap<Class, ConcurrentLinkedQueue<MicroService>> subscription;
-	private ConcurrentHashMap<MicroService, Lock> locks;
+	private ConcurrentHashMap<MicroService, Object> locks;
 	private ConcurrentHashMap<MicroService, ConcurrentLinkedQueue<Message>> registers;
 	private ConcurrentHashMap<Event, Future> mailBoxs;
 
@@ -125,7 +125,7 @@ public class MessageBusImpl implements MessageBus {
 	public void register(MicroService m) {
 		if (!registers.containsKey(m))
 			registers.put(m, new ConcurrentLinkedQueue<Message>());
-		locks.put(m, new Lock());
+		locks.put(m, new Object());
 	}
 
 	@Override

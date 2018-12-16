@@ -41,12 +41,8 @@ public class SellingService extends MicroService {
 		if (futureObject != null) {
 			Integer resolved = futureObject.get();
 			if (resolved != -1) {
-				// System.out
-				// .println(this.getName() + " processing the event, its result is \"" +
-				// resolved + "\" - success");
 				return resolved;
 			} else {
-		//		System.out.println(this.getName() + ":cant resolved the event");
 			}
 		} else {
 			System.out.println(
@@ -65,12 +61,8 @@ public class SellingService extends MicroService {
 		if (futureObject != null) {
 			BookInventoryInfo resolved = futureObject.get();
 			if (resolved != null) {
-				// System.out.println(this.getName() + " processing the event, its result is \""
-				// + resolved + "\" - success");
 				return resolved;
 			} else {
-				// System.out.println("Time has elapsed, no services has resolved the event -
-				// terminating");
 			}
 		} else {
 			System.out.println(
@@ -81,10 +73,7 @@ public class SellingService extends MicroService {
 
 	@Override
 	protected void initialize() {
-		// System.out.println("Event Handler " + getName() + " started");
-		subscribeEvent(OrderBookEvent.class, ev -> { // so this is the call function of the ev event that is being sent
-			// System.out.println("Event Handler " + getName() + " got a new event "); //
-			// TODO delete
+		subscribeEvent(OrderBookEvent.class, ev -> {
 			OrderReceipt output = null;
 			Customer c = ev.getCustomer();
 			OrderReceipt receipt = new OrderReceipt(8, getName(), c.getId(), ev.getbookName(), time);
@@ -115,7 +104,7 @@ public class SellingService extends MicroService {
 	}
 
 	private void sendBook(BookInventoryInfo book, Customer c) {
-		Future<Boolean> futureObject = sendEvent(new DeliveryEvent(book, c));
+		sendEvent(new DeliveryEvent(book, c));
 	}
 
 }

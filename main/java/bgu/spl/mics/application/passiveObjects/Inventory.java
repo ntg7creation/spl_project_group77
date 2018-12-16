@@ -19,12 +19,11 @@ public class Inventory {
 
 	private ConcurrentHashMap<String, Integer> amount;
 	private ConcurrentHashMap<String, Integer> price;
-	private ConcurrentLinkedQueue<String> books;
 
 	private Inventory() {
 		amount = new ConcurrentHashMap<>();
 		price = new ConcurrentHashMap<>();
-		books = new ConcurrentLinkedQueue<>();
+		new ConcurrentLinkedQueue<>();
 
 	}
 
@@ -45,13 +44,10 @@ public class Inventory {
 	 * store inventory.
 	 * <p>
 	 * 
-	 * @param inventory
-	 *            Data structure containing all data necessary for initialization of
-	 *            the inventory.
+	 * @param inventory Data structure containing all data necessary for
+	 *                  initialization of the inventory.
 	 */
 	public void load(BookInventoryInfo[] inventory) {
-		// ConcurrentHashMap <String,Integer> amount = new ConcurrentHashMap <>();
-		// ConcurrentHashMap <String,Integer> price = new ConcurrentHashMap <>();
 
 		for (int i = 0; i < inventory.length; i++) {
 			price.put(inventory[i].getBookTitle(), inventory[i].getPrice());
@@ -64,52 +60,42 @@ public class Inventory {
 	 * Attempts to take one book from the store.
 	 * <p>
 	 * 
-	 * @param book
-	 *            Name of the book to take from the store
+	 * @param book Name of the book to take from the store
 	 * @return an {@link Enum} with options NOT_IN_STOCK and SUCCESSFULLY_TAKEN. The
 	 *         first should not change the state of the inventory while the second
 	 *         should reduce by one the number of books of the desired type.
 	 */
 	public OrderResult take(String book) {
-		Integer count = amount.get(book);
-		if (count != null) {
-			synchronized (book) {
-				if (count > 0) {
+		synchronized (amount.get(book)) {
+			if (amount.get(book) != null) {
+				if (amount.get(book) > 0) {
+					int stash = amount.remove(book);
+					amount.put(book, stash);
 					return OrderResult.Success;
 				}
-				// count= count- 1;
+
 			}
 		}
+		;
+
 		return OrderResult.OutOfStock;
 
-		// OrderResult result = OrderResult.DontHaveBook;
-		// for (BookInventoryInfo bookInventoryInfo : inventory) {
-		// if (bookInventoryInfo.getBookTitle().equals(book)) {
-		// result = OrderResult.OutOfStock;
-		// if (bookInventoryInfo.removeBooks(1)) {
-		// return OrderResult.Success;
-		// }
-		// }
-		// }
-		// return result;
 	}
 
 	/**
 	 * Checks if a certain book is available in the inventory.
 	 * <p>
 	 * 
-	 * @param book
-	 *            Name of the book.
+	 * @param book Name of the book.
 	 * @return the price of the book if it is available, -1 otherwise.
 	 */
 	public int checkAvailabiltyAndGetPrice(String book) {
 
-		Integer count = amount.get(book);
-		if (count != null) {
-			// synchronized (book) { not needed
-			if (count > 0)
-				return price.get(book);
-			// }
+		synchronized (amount.get(book)) {
+			if (amount.get(book) != null) {
+				if (amount.get(book) > 0)
+					return price.get(book);
+			}
 		}
 		return -1;
 	}

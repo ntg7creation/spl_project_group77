@@ -65,7 +65,6 @@ public class Customer {
 	 * @return A list of receipts.
 	 */
 	public List<OrderReceipt> getCustomerReceiptList() {
-		// TODO Implement this
 		return myorders;
 	}
 

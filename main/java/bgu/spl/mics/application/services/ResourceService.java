@@ -28,26 +28,18 @@ public class ResourceService extends MicroService {
 		super(Myname);
 		this.Resourcesholder = ResourcesHolder.getInstance();
 
-		// TODO Implement this
+
 	}
 
 	@Override
 	protected void initialize() {
 
-		// subscribe to getVehicleEvent
-
 		subscribeEvent(GetVehicleEvent.class, ev -> {
 			Future<DeliveryVehicle> future = Resourcesholder.acquireVehicle();
-//			Future <Future<DeliveryVehicle>> DoubleFuture = new Future 
-//			if (future != null)
-//				complete(ev, future.get());
-//			else
-//				complete(ev, null);
 			complete(ev, future);
 		});
 
-		// subscribe to ReturnVehicleEvent
-
+		
 		subscribeEvent(ReturnVehicleEvent.class, ev -> {
 			Resourcesholder.releaseVehicle(ev.getVehicle());
 			complete(ev, true);

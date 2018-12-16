@@ -32,24 +32,21 @@ public class InventoryService extends MicroService {
 	@Override
 	protected void initialize() {
 
-
 		subscribeEvent(CheckAvailabilityEventAndGetPriceEvent.class, event -> {
 			int getPrice = inventory.checkAvailabiltyAndGetPrice(event.getTitle());
 			complete(event, getPrice);
 		});
 
-
 		// subscribe to getBook
 		subscribeEvent(GetBookEvent.class, event -> {
 
 			OrderResult order = inventory.take(event.GetName());
-			BookInventoryInfo output = new BookInventoryInfo(event.GetName(), 1,
-					inventory.checkAvailabiltyAndGetPrice(event.GetName()));
+			BookInventoryInfo output = null;
+			if (order == OrderResult.Success)
+				output = new BookInventoryInfo(event.GetName(), 1,
+						inventory.checkAvailabiltyAndGetPrice(event.GetName()));
 			complete(event, output);
 		});
-
-
-
 
 	};
 }

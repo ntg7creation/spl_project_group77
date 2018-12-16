@@ -38,16 +38,13 @@ public class Future<T> {
 	 */
 	public T get() {
 		try {
-			// System.out.println(done);
-			while (!done) {// i dont think we need this
+			while (!done) {
 				synchronized (lock) {
 					lock.wait();
 				}
-				// System.out.println(done);
 			}
 		} catch (Exception e) {
 			System.out.println(e);
-			// TODO: handle exception
 		}
 
 		return result;
@@ -89,9 +86,6 @@ public class Future<T> {
 	 *         null.
 	 */
 	public T get(long timeout, TimeUnit unit) {
-		// so this sholde have sleep for ()
-		// TODO: implement this.
-
 		if (!done) {
 			try {
 				synchronized (lock) {
