@@ -112,7 +112,7 @@ public class SellingService extends MicroService {
 	}
 
 	private void sendBook(BookInventoryInfo book, Customer c) {
-		Future<Object> futureObject = sendEvent(new DeliveryEvent(book, c));
+		Future<Boolean> futureObject = sendEvent(new DeliveryEvent(book, c));
 	}
 
 }

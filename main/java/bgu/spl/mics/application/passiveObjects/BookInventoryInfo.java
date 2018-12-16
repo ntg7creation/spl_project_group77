@@ -64,6 +64,12 @@ public class BookInventoryInfo {
 		return price;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return "[title:" +title + ",amount:" +amount+",price:"+price+"]" ;
+	}
+	
 	
 
 	

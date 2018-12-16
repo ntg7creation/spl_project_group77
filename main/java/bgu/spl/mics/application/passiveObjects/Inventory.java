@@ -131,23 +131,72 @@ public class Inventory {
 	 */
 	public void printInventoryToFile(String filename) {
 		
-//		ConcurrentHashMap <String,Integer> inventoryToFile = new ConcurrentHashMap <>();
-//		for (BookInventoryInfo book : book) {
-//			String name = book.getBookTitle();
+//		ConcurrentHashMap <String,Integer> BooksConcurrentHashMap = new ConcurrentHashMap <>();
+//		for(BookInventoryInfo bookInfo: books){
+//			BooksConcurrentHashMap.put(bookInfo.getBookTitle(), bookInfo.getAmountInInventory());
+//			try {
+//				FileOutputStream fileOut = new FileOutputStream(filename);
+//				ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//				out.writeObject(BooksConcurrentHashMap);
+//				out.close();
+//				fileOut.close();
+//				System.out.printf("Serialized data is saved in " + filename);
+//			} catch (IOException i) {
+//				i.printStackTrace();
+//		
+//			
+//
+//		}
+//			booksHashMap.put(bookInfo.getBookTitle(), bookInfo.getAmountInInventory());			String name = book.getBookTitle();
 //			Integer amount = book.getAmountInInventory();
 //			inventoryToFile.put(name,amount);
-//		}
-//		filePrinter.printToFile(inventoryToFile,filename);
-
-		
-		
-		
-//		synchronized (Theinventory){
-//			ConcurrentHashMap<String, Integer> booksHashMap = new ConcurrentHashMap<>();
-//			for(BookInventoryInfo bookInfo: inventory){
+//			
+////            FileOutputStream fos =
+////                    new FileOutputStream("hashmap.ser");
+////                 ObjectOutputStream oos = new ObjectOutputStream(fos);
+////                 oos.writeObject(hmap);
+////                 oos.close();
+////                 fos.close();
+////		}
+////		filePrinter.printToFile(inventoryToFile,filename);
+////		
+////		BookMap.putAll(AmountMap);
+////		try
+////		{
+////			//Saving of object in a file
+////			FileOutputStream file = new FileOutputStream(filename);
+////			ObjectOutputStream out = new ObjectOutputStream(file);
+////
+////			// Method for serialization of object
+////			out.writeObject(BookMap);
+////			out.close();
+////			file.close();
+////		}
+////		catch(IOException ex)
+//			
+//			
+//			
+//			HashMap<String, Integer> booksHashMap = new HashMap<>();
+//			for(BookInventoryInfo bookInfo: books){
 //				booksHashMap.put(bookInfo.getBookTitle(), bookInfo.getAmountInInventory());
-//				// need to complete
 //			}
+//		
+//		
+//		
+//		{
+//			System.out.println("IOException is caught");
+//
+//		
+//		
+//		
+////		synchronized (Theinventory){
+////			ConcurrentHashMap<String, Integer> booksHashMap = new ConcurrentHashMap<>();
+////			for(BookInventoryInfo bookInfo: inventory){
+////				booksHashMap.put(bookInfo.getBookTitle(), bookInfo.getAmountInInventory());
+////				// need to complete
+////			}
 		}
-	}
+}
+	
+	
 
