@@ -111,16 +111,6 @@ public class Inventory {
 		return -1;
 	}
 
-	// for (BookInventoryInfo bookInventoryInfo : inventory) {
-	// if (bookInventoryInfo.getBookTitle().equals(book)) {
-	// if (bookInventoryInfo.getAmountInInventory() > 0) {
-	// return bookInventoryInfo.getPrice();
-	// }
-	// }
-	// }
-	// return -1;
-	// }
-
 	/**
 	 * 
 	 * <p>
