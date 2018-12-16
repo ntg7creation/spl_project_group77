@@ -63,7 +63,7 @@ public class APIService extends MicroService {
 				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
 				return resolved;
 			} else {
-			//	System.out.println(this.getName() + ":cant resolved event");
+				System.out.println(this.getName() + ":cant resolved event");
 			}
 		} else {
 			System.out.println(

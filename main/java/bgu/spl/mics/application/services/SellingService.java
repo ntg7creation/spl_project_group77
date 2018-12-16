@@ -36,18 +36,19 @@ public class SellingService extends MicroService {
 		themoney = MoneyRegister.getInstance();
 	}
 
-	private Integer AskAvilabilityAndGetPrice() {
-		Future<Integer> futureObject = sendEvent(new CheckAvailabilityEventAndGetPriceEvent("test"));
+	private Integer AskAvilabilityAndGetPrice(String bookName) {
+		Future<Integer> futureObject = sendEvent(new CheckAvailabilityEventAndGetPriceEvent(bookName));
 		if (futureObject != null) {
-			Integer resolved = futureObject.get(100, TimeUnit.MILLISECONDS);
-			if (resolved != null) {
+			Integer resolved = futureObject.get();
+			if (resolved != -1) {
 				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
 				return resolved;
 			} else {
 				System.out.println(this.getName() + ":cant resolved the event");
 			}
 		} else {
-		//	System.out.println(		"No Micro-Service has registered to handle CheckAvilabilityAndgetPrice events! The event cannot be processed");
+			// System.out.println( "No Micro-Service has registered to handle
+			// CheckAvilabilityAndgetPrice events! The event cannot be processed");
 		}
 
 		return -1;
@@ -74,17 +75,17 @@ public class SellingService extends MicroService {
 		return null;
 	}
 
+
 	@Override
 	protected void initialize() {
-	//	System.out.println("Event Handler " + getName() + " started");
-
+		// System.out.println("Event Handler " + getName() + " started");
 		subscribeEvent(OrderBookEvent.class, ev -> { // so this is the call function of the ev event that is being sent
 			// System.out.println("Event Handler " + getName() + " got a new event "); //
 			// TODO delete
 			OrderReceipt output = null;
 			Customer c = ev.getCustomer();
 			OrderReceipt receipt = new OrderReceipt(8, getName(), c.getId(), ev.getbookName(), time);
-			Integer price = AskAvilabilityAndGetPrice();
+			Integer price = AskAvilabilityAndGetPrice(ev.getbookName());
 			BookInventoryInfo book = null;
 			if (price != -1) {
 				if (ev.getCustomer().getAvailableCreditAmount() > price) {

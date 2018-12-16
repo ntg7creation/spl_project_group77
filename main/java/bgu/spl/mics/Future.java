@@ -101,7 +101,7 @@ public class Future<T> {
 			} catch (InterruptedException e) {
 			}
 		}
-		return null;
+		return result;
 	}
 
 }

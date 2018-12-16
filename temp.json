@@ -1,0 +1,20 @@
+[
+	{
+		"bookTitle": "The Hunger Games",
+		"amount": 90,
+		"price": 102,
+		"job": "Teacher"
+	},
+
+	{
+		"name": "Mark",
+		"city": "Oslo",
+		"cars": 
+		[
+			"VW",
+			"Toyata"
+		],
+
+		"job": "Doctor"
+	}
+]

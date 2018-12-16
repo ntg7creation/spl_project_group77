@@ -23,9 +23,9 @@ import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
  */
 public class LogisticsService extends MicroService {
 
-	public LogisticsService() {
-		super("Change_This_Name");
-		// TODO Implement this
+	public LogisticsService(String name) {
+		super(name);
+
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class LogisticsService extends MicroService {
 		if (futureObject != null) {
 			DeliveryVehicle resolved = futureObject.get();
 			if (resolved != null) {
-				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
+				System.out.println(this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
 				return resolved;
 			} else {
 				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen

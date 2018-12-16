@@ -20,13 +20,13 @@ import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
  * constructor signatures and even add new public constructors.
  */
 public class ResourceService extends MicroService {
-	private ResourcesHolder ResourcesHolder;
+	private ResourcesHolder Resourcesholder;
 
-	//g
+	// g
 
 	public ResourceService(String Myname) {
 		super(Myname);
-		this.ResourcesHolder = ResourcesHolder.getInstance();
+		this.Resourcesholder = ResourcesHolder.getInstance();
 
 		// TODO Implement this
 	}
@@ -36,23 +36,21 @@ public class ResourceService extends MicroService {
 
 		// subscribe to getVehicleEvent
 
-		subscribeEvent(GetVehicleEvent.class, ev->{
-			Future <DeliveryVehicle> future =  ResourcesHolder.getInstance().acquireVehicle();
-			complete(ev,future.get());
+		subscribeEvent(GetVehicleEvent.class, ev -> {
+			Future<DeliveryVehicle> future = Resourcesholder.acquireVehicle();
+			if (future != null)
+				complete(ev, future.get());
+			else
+				complete(ev, null);
 
 		});
 
 		// subscribe to ReturnVehicleEvent
 
-		subscribeEvent(ReturnVehicleEvent.class, ev->{
-			ResourcesHolder.getInstance().releaseVehicle(ev.getVehicle());
-			complete(ev,true);
+		subscribeEvent(ReturnVehicleEvent.class, ev -> {
+			Resourcesholder.releaseVehicle(ev.getVehicle());
+			complete(ev, true);
 		});
-
-
-
 
 	};
 }
-
-
