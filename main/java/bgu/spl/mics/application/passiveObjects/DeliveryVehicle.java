@@ -10,12 +10,13 @@ public class DeliveryVehicle {
 
 	private int license;
 	private int speed;
+	private int countNumberofdrives;
 
 	/**
 	 * Constructor.
 	 */
 	public DeliveryVehicle(int license, int speed) {
-
+		countNumberofdrives = 0;
 		this.license = license;
 		this.speed = speed;
 
@@ -51,11 +52,16 @@ public class DeliveryVehicle {
 	 */
 	public void deliver(String address, int distance) {
 
+		System.out.println(license + " :start drive" + countNumberofdrives);
+		countNumberofdrives++;
 		try {
 			// need to change
-			Thread.sleep((int)distance / speed);
+			Thread.sleep((int) distance / speed);
 		} catch (Exception e) {
+			System.out.println("fail drive");
 		}
+		System.out.println("end drive");
+		
 		// TODO Implement this
 	}
 }

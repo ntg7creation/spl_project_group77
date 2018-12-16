@@ -29,7 +29,7 @@ public class BookStoreRunner {
     	DeliveryVehicle[] cars = {new DeliveryVehicle(9183, 5)};
     	ResourcesHolder.getInstance().load(cars);
     	
-    	for (int i = 0; i < 1; i++) {
+    	for (int i = 0; i < 3; i++) {
     		test1();	
 		}
     	TimeService T1 = new TimeService("natais clock");
@@ -48,7 +48,7 @@ public class BookStoreRunner {
     	
     	SellingService s1 = new SellingService("david");
     	
-    	Customer c = new Customer("natai", 208, "somewhere", 10, 1000, 771772);
+    	Customer c = new Customer("natai", 208, "somewhere", 10000, 1000, 771772);
     	HashMap<Integer,String> list = new HashMap<>();
     	list.put(3, "harry potter");
     	list.put(4, "parsy Jacson");

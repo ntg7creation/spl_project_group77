@@ -73,7 +73,7 @@ public class MessageBusImpl implements MessageBus {
 		// if (f == null)
 		// System.out.println("try to resolve a future that dose not exist");
 		if (f == null)
-			System.out.println(e);
+			System.out.println(e+"      has lost his future");
 		f.resolve(result);
 
 	}

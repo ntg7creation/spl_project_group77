@@ -60,10 +60,10 @@ public class APIService extends MicroService {
 		if (futureObject != null) {
 			OrderReceipt resolved = futureObject.get();
 			if (resolved != null) {
-				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
+			//	System.out.println(this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
 				return resolved;
 			} else {
-				System.out.println(this.getName() + ":cant resolved event");
+				//System.out.println(this.getName() + ":cant resolved event");
 			}
 		} else {
 			System.out.println(

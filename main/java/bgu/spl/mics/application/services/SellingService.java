@@ -41,14 +41,16 @@ public class SellingService extends MicroService {
 		if (futureObject != null) {
 			Integer resolved = futureObject.get();
 			if (resolved != -1) {
-				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
+				// System.out
+				// .println(this.getName() + " processing the event, its result is \"" +
+				// resolved + "\" - success");
 				return resolved;
 			} else {
-				System.out.println(this.getName() + ":cant resolved the event");
+		//		System.out.println(this.getName() + ":cant resolved the event");
 			}
 		} else {
-			// System.out.println( "No Micro-Service has registered to handle
-			// CheckAvilabilityAndgetPrice events! The event cannot be processed");
+			System.out.println(
+					"No Micro-Service has registered to handle		CheckAvilabilityAndgetPrice events! The event cannot be processed");
 		}
 
 		return -1;
@@ -61,12 +63,14 @@ public class SellingService extends MicroService {
 	private BookInventoryInfo getBook(String name) {
 		Future<BookInventoryInfo> futureObject = sendEvent(new GetBookEvent(name));
 		if (futureObject != null) {
-			BookInventoryInfo resolved = futureObject.get(100, TimeUnit.MILLISECONDS);
+			BookInventoryInfo resolved = futureObject.get();
 			if (resolved != null) {
-				System.out.println("Completed processing the event, its result is \"" + resolved + "\" - success");
+				// System.out.println(this.getName() + " processing the event, its result is \""
+				// + resolved + "\" - success");
 				return resolved;
 			} else {
-				System.out.println("Time has elapsed, no services has resolved the event - terminating");
+				// System.out.println("Time has elapsed, no services has resolved the event -
+				// terminating");
 			}
 		} else {
 			System.out.println(
@@ -74,7 +78,6 @@ public class SellingService extends MicroService {
 		}
 		return null;
 	}
-
 
 	@Override
 	protected void initialize() {
@@ -112,7 +115,7 @@ public class SellingService extends MicroService {
 	}
 
 	private void sendBook(BookInventoryInfo book, Customer c) {
-		Future<Object> futureObject = sendEvent(new DeliveryEvent(book, c));
+		Future<Boolean> futureObject = sendEvent(new DeliveryEvent(book, c));
 	}
 
 }
