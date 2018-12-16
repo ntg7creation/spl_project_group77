@@ -29,7 +29,7 @@ public class BookStoreRunner {
     	DeliveryVehicle[] cars = {new DeliveryVehicle(9183, 5)};
     	ResourcesHolder.getInstance().load(cars);
     	
-    	for (int i = 0; i < 3; i++) {
+    	for (int i = 0; i < 30; i++) {
     		test1();	
 		}
     	TimeService T1 = new TimeService("natais clock");

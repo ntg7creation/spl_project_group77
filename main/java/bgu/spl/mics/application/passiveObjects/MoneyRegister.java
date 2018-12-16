@@ -65,7 +65,7 @@ public class MoneyRegister {
 	 * @param amount
 	 *            amount to charge
 	 */
-	synchronized public void chargeCreditCard(Customer c, int amount) {
+	 public void chargeCreditCard(Customer c, int amount) {
 		c.removeCredit(amount);
 	}
 
