@@ -1,5 +1,8 @@
 package bgu.spl.mics.application.passiveObjects;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -65,7 +68,7 @@ public class MoneyRegister {
 	 * @param amount
 	 *            amount to charge
 	 */
-	 public void chargeCreditCard(Customer c, int amount) {
+	public void chargeCreditCard(Customer c, int amount) {
 		c.removeCredit(amount);
 	}
 
@@ -75,6 +78,16 @@ public class MoneyRegister {
 	 * called by the main method in order to generate the output..
 	 */
 	public void printOrderReceipts(String filename) {
-		// TODO: Implement this
+		try {
+			FileOutputStream fileOut = new FileOutputStream(filename);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(receipts);
+			out.close();
+			fileOut.close();
+			System.out.println("Data is saved in " + filename);
+		} catch (IOException i) {
+			i.printStackTrace();
+
+		}
 	}
 }
