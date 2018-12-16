@@ -18,8 +18,8 @@ public class Inventory {
 
 
 	private Inventory() {
-		ConcurrentHashMap <String,Integer> amount = new ConcurrentHashMap <>();
-		ConcurrentHashMap <String,Integer> price = new ConcurrentHashMap <>();
+	amount = new ConcurrentHashMap <>();
+	price = new ConcurrentHashMap <>();
 
 	}
 
@@ -45,8 +45,8 @@ public class Inventory {
 	 *            the inventory.
 	 */
 	public void load(BookInventoryInfo[] inventory) {
-		ConcurrentHashMap <String,Integer> amount = new ConcurrentHashMap <>();
-		ConcurrentHashMap <String,Integer> price = new ConcurrentHashMap <>();
+	//	ConcurrentHashMap <String,Integer> amount = new ConcurrentHashMap <>();
+	//	ConcurrentHashMap <String,Integer> price = new ConcurrentHashMap <>();
 
 		for(int i = 0 ; i < inventory.length ; i++){
 			price.put(inventory[i].getBookTitle() , inventory[i].getPrice());
@@ -101,10 +101,10 @@ public class Inventory {
 		
         Integer count = amount.get(book);
         if (count != null) {
-            synchronized (book) {
+            //synchronized (book) { not needed
                 if (count> 0)
                     return price.get(book);
-            }
+           // }
         }
         return -1;
 	}
