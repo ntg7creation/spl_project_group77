@@ -30,56 +30,63 @@ public class LogisticsService extends MicroService {
 
 	@Override
 	protected void initialize() {
-		//System.out.println("Event Handler " + getName() + " started");
+		// System.out.println("Event Handler " + getName() + " started");
 
 		subscribeEvent(DeliveryEvent.class, ev -> { // so this is the call function of the ev event that is being sent
-			//System.out.println("Event Handler " + getName() + " got a new event "); // TODO delete
+			// System.out.println("Event Handler " + getName() + " got a new event "); //
+			// TODO delete
 			Customer c = ev.getCustomer();
 			BookInventoryInfo book = ev.getBook();
-			DeliveryVehicle deliveryVehilce = getVehicle();
+			DeliveryVehicle deliveryVehilce = openBox(getVehicle());
 			if (deliveryVehilce != null) {
 				System.out.println("vhicle need to start driving");
-				
+
 				deliveryVehilce.deliver(c.getAddress(), c.getDistance());
-			}	sendEvent(new ReturnVehicleEvent(deliveryVehilce));
+			}
+			sendEvent(new ReturnVehicleEvent(deliveryVehilce));
 			complete(ev, true);
 
 		});
 
 	}
 
-	private DeliveryVehicle getVehicle() {
-//
-//		Future<DeliveryVehicle> futureObject = sendEvent(new GetVehicleEvent());
-//		if (futureObject != null) {
-//			System.out.println("waiting for vhicletoget from future");
-//			DeliveryVehicle resolved = futureObject.get();
-//			if (resolved != null) {
-//				System.out.println(this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
-//				return resolved;
-//			} else {
-//				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
-//			}
-//		} else {
-//			System.out.println(
-//					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
-//		}
+	private Future<DeliveryVehicle> getVehicle() {
 
+		Future<Future<DeliveryVehicle>> futureObject = sendEvent(new GetVehicleEvent());
+		if (futureObject != null) {
+			System.out.println("waiting for vhicletoget from future");
+			Future<DeliveryVehicle> resolved = futureObject.get();
+			if (resolved != null) {
+				System.out.println(
+						this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
+				return resolved;
+			} else {
+				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
+			}
+		} else {
+			System.out.println(
+					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
+		}
 
-//		Future<DeliveryVehicle> futureObject = sendEvent(new GetVehicleEvent());
-//		if (futureObject != null) {
-//			DeliveryVehicle resolved = futureObject.get();
-//			if (resolved != null) {
-//				System.out.println(this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
-//				return resolved;
-//			} else {
-//				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
-//			}
-//		} else {
-//			System.out.println(
-//					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
-//		}
-//
+		return null;
+	}
+
+	private DeliveryVehicle openBox(Future<DeliveryVehicle> futureObject) {
+		// Future<DeliveryVehicle> futureObject = sendEvent(new GetVehicleEvent());
+		if (futureObject != null) {
+			DeliveryVehicle resolved = futureObject.get();
+			if (resolved != null) {
+				System.out.println(
+						this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
+				return resolved;
+			} else {
+				System.out.println("the vehicleService failed to fech me a vehicle"); // shold never happen
+			}
+		} else {
+			System.out.println(
+					"No Micro-Service has registered to handle GetVehicleEvent events! The event cannot be processed");
+		}
+
 		return null;
 	}
 
