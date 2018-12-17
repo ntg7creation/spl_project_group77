@@ -7,6 +7,7 @@ import bgu.spl.mics.staticFunctions;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.io.IOException;
 
 /**
@@ -18,7 +19,7 @@ import java.io.IOException;
  * <p>
  * You can add ONLY private fields and methods to this class as you see fit.
  */
-public class Inventory {
+public class Inventory implements Serializable {
 
 	private ConcurrentHashMap<String, Integer> amount;
 	private ConcurrentHashMap<String, Integer> price;

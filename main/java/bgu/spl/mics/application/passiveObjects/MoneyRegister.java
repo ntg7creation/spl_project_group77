@@ -1,8 +1,6 @@
 package bgu.spl.mics.application.passiveObjects;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,17 +16,18 @@ import bgu.spl.mics.staticFunctions;
  * <p>
  * You can add ONLY private fields and methods to this class as you see fit.
  */
-public class MoneyRegister {
+public class MoneyRegister implements Serializable {
+
 
 	private List<OrderReceipt> receipts;
-	private Object countingLock;
+	private Integer countingLock;
 
 	private MoneyRegister() {
 		receipts = Collections.synchronizedList(new ArrayList<OrderReceipt>());
-		countingLock = new Object();
+		countingLock = new Integer("hi");
 	}
 
-	private static class Holder {
+	private static class Holder implements Serializable {
 		private static final MoneyRegister INSTANCE = new MoneyRegister();
 	}
 
@@ -36,6 +35,7 @@ public class MoneyRegister {
 	 * Retrieves the single instance of this class.
 	 */
 	public static MoneyRegister getInstance() {
+
 		return Holder.INSTANCE;
 	}
 
@@ -82,6 +82,6 @@ public class MoneyRegister {
 	public void printOrderReceipts(String filename) {
 
 		staticFunctions.printStoFail(filename, receipts);
-		
+
 	}
 }
