@@ -89,7 +89,6 @@ public class Future<T> {
 		if (!done) {
 			try {
 				synchronized (lock) {
-
 					lock.wait(unit.convert(timeout, TimeUnit.MILLISECONDS));
 				}
 			} catch (InterruptedException e) {

@@ -4,8 +4,10 @@ import java.io.Reader;
 
 import com.google.gson.Gson;
 
+import bgu.spl.mics.staticFunctions;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.Inventory;
+import bgu.spl.mics.application.passiveObjects.MoneyRegister;
 import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 import bgu.spl.mics.application.services.APIService;
 import bgu.spl.mics.application.services.InventoryService;
@@ -51,6 +53,10 @@ class testfile {
 				Thread AST = new Thread(new APIService(c, c.getOrderSchedule()));
 				AST.start();
 			}
+			MoneyRegister.getInstance().printOrderReceipts("C:\\Users\\Lenovo\\git\\spl_project_group77\\testfile1");
+			Inventory.getInstance().printInventoryToFile("C:\\Users\\Lenovo\\git\\spl_project_group77\\testfile2");
+		//	staticFunctions.printStoFail("C:\\Users\\Lenovo\\git\\spl_project_group77\\testfile", staff);
+			
 			//System.out.println(staff);
 			// for (DeliveryVehicle s : staff) {
 			// System.out.println(s.getLicense());

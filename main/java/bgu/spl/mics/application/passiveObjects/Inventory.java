@@ -2,6 +2,9 @@ package bgu.spl.mics.application.passiveObjects;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import bgu.spl.mics.staticFunctions;
+
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
@@ -112,16 +115,7 @@ public class Inventory {
 	 */
 	public void printInventoryToFile(String filename) {
 
-		try {
-			FileOutputStream fileOut = new FileOutputStream(filename);
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(amount);
-			out.close();
-			fileOut.close();
-			System.out.println("Data is saved in " + filename);
-		} catch (IOException i) {
-			i.printStackTrace();
+		staticFunctions.printStoFail(filename, amount);
 
-		}
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import bgu.spl.mics.MicroService;
+import bgu.spl.mics.application.messages.Terminate;
 import bgu.spl.mics.application.messages.Tick;
 import bgu.spl.mics.application.passiveObjects.Inventory;
 import bgu.spl.mics.application.passiveObjects.MoneyRegister;
@@ -25,16 +26,16 @@ public class TimeService extends MicroService {
 	private int speed;
 	private int duration;
 	private int time;
-	//private Timer clock;
+	// private Timer clock;
 
 	public TimeService() {
-	super("timer");
+		super("timer");
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public TimeService(String name) {
 		super(name);
-		//clock = new Timer();
+		// clock = new Timer();
 		time = 0;
 		speed = 1000;
 	}
@@ -47,11 +48,14 @@ public class TimeService extends MicroService {
 			@Override
 			public void run() {
 				time++;
-			
-				sendBroadcast(new Tick(time));
-
+				if (time < duration)
+					sendBroadcast(new Tick(time));
+				else {
+					sendBroadcast(new Terminate());
+					clock.cancel();
+				}
 			}
 		}, 0, speed);
-		
+
 	}
 }

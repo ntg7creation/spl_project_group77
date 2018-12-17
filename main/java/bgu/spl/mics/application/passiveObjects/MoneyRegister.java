@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import bgu.spl.mics.staticFunctions;
+
 /**
  * Passive object representing the store finance management. It should hold a
  * list of receipts issued by the store.
@@ -78,16 +80,8 @@ public class MoneyRegister {
 	 * called by the main method in order to generate the output..
 	 */
 	public void printOrderReceipts(String filename) {
-		try {
-			FileOutputStream fileOut = new FileOutputStream(filename);
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(receipts);
-			out.close();
-			fileOut.close();
-			System.out.println("Data is saved in " + filename);
-		} catch (IOException i) {
-			i.printStackTrace();
 
-		}
+		staticFunctions.printStoFail(filename, receipts);
+		
 	}
 }
