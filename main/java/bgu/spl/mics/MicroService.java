@@ -2,6 +2,7 @@ package bgu.spl.mics;
 
 import java.util.HashMap;
 
+import bgu.spl.mics.application.messages.Terminate;
 import bgu.spl.mics.application.messages.Tick;
 
 /**
@@ -151,6 +152,7 @@ public abstract class MicroService implements Runnable {
 	 * message.
 	 */
 	protected final void terminate() {
+		System.out.println(this.getName() + "terminated" );
 		this.terminated = true;
 		bus.unregister(this);
 	}
@@ -170,7 +172,7 @@ public abstract class MicroService implements Runnable {
 	@Override
 	public final void run() {
 		
-		subscribeBroadcast(Tick.class, broad ->{
+		subscribeBroadcast(Terminate.class, broad ->{
 			this.terminate();
 		});
 		

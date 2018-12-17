@@ -37,6 +37,7 @@ public class SellingService extends MicroService {
 	}
 
 	private Integer AskAvilabilityAndGetPrice(String bookName) {
+		System.out.println(this.getName() + " checking price for " + bookName);
 		Future<Integer> futureObject = sendEvent(new CheckAvailabilityEventAndGetPriceEvent(bookName));
 		if (futureObject != null) {
 			Integer resolved = futureObject.get();

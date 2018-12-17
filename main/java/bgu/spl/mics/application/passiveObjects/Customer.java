@@ -22,7 +22,12 @@ public class Customer implements Serializable {
 	private OrderSchedule[] orderSchedule;
 
 
+	public Customer()
+	{	myorders = new LinkedList<OrderReceipt>();
+	}
+	
 	public Customer(String name, int id, String address, int distance, int creditstart, int creditnumber) {
+		System.out.println("creating customer");
 		this.name = name;
 		this.id = id;
 		this.address = address;
@@ -72,6 +77,7 @@ public class Customer implements Serializable {
 	}
 
 	public void addReceipt(OrderReceipt o) {
+
 		myorders.add(o);
 	}
 

@@ -11,6 +11,8 @@ import java.util.concurrent.Executors;
 
 import com.google.gson.Gson;
 
+import bgu.spl.mics.MessageBus;
+import bgu.spl.mics.MessageBusImpl;
 import bgu.spl.mics.staticFunctions;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.Inventory;
@@ -81,6 +83,7 @@ public class BookStoreRunner {
 				myThreads.add(TST);
 				TST.start();
 
+				
 				for (Thread thread : myThreads) {
 					try {
 						thread.join();
@@ -113,7 +116,7 @@ public class BookStoreRunner {
 		HashMap<Integer, String> list = new HashMap<>();
 		list.put(3, "harry potter");
 		list.put(4, "parsy Jacson");
-		APIService a1 = new APIService(c, list);
+		APIService a1 = new APIService(c);
 		InventoryService I1 = new InventoryService("Inventorytest");
 		LogisticsService l1 = new LogisticsService("driver test");
 		ResourceService r1 = new ResourceService("parking lot gate 1 test");
@@ -151,8 +154,8 @@ public class BookStoreRunner {
 		HashMap<Integer, String> list2 = new HashMap<>();
 		list2.put(3, "the wall");
 		list2.put(4, "animal farm");
-		APIService a1 = new APIService(c1, list1);
-		APIService a2 = new APIService(c2, list2);
+		APIService a1 = new APIService(c1);
+		APIService a2 = new APIService(c2);
 
 		TimeService T1 = new TimeService("natais clock");
 

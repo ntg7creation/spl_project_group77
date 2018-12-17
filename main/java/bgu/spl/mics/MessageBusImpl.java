@@ -9,6 +9,7 @@ import bgu.spl.mics.application.messages.GetBookEvent;
 import bgu.spl.mics.application.messages.GetVehicleEvent;
 import bgu.spl.mics.application.messages.OrderBookEvent;
 import bgu.spl.mics.application.messages.ReturnVehicleEvent;
+import bgu.spl.mics.application.messages.Terminate;
 import bgu.spl.mics.application.messages.Tick;
 
 /**
@@ -46,14 +47,15 @@ public class MessageBusImpl implements MessageBus {
 		subscription.put(OrderBookEvent.class, new ConcurrentLinkedQueue<>());
 		subscription.put(Tick.class, new ConcurrentLinkedQueue<>());
 		subscription.put(ReturnVehicleEvent.class, new ConcurrentLinkedQueue<>());
+		subscription.put(Terminate.class, new ConcurrentLinkedQueue<>());
 
 	}
 
 	@Override
 	public <T> void subscribeEvent(Class<? extends Event<T>> type, MicroService m) {
-		if (subscription.get(type) == null)
-			System.out.println("cant register to this type of event");
-		subscription.get(type).add(m);
+			subscription.get(type).add(m);
+
+
 	}
 
 	@Override
@@ -98,6 +100,11 @@ public class MessageBusImpl implements MessageBus {
 
 	@Override
 	public <T> Future<T> sendEvent(Event<T> e) {
+		if(e.getClass() == CheckAvailabilityEventAndGetPriceEvent.class)
+		{
+			//System.out.println(e.getClass());
+			System.out.println(subscription.get(e.getClass()));
+		}
 		Future<T> newBoxkey = null;
 		synchronized (subscription.get(e.getClass())) {
 			ConcurrentLinkedQueue<MicroService> waiting = subscription.get(e.getClass());
