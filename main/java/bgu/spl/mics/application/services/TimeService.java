@@ -23,18 +23,25 @@ import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 public class TimeService extends MicroService {
 
 	private int speed;
+	private int duration;
 	private int time;
-	Timer clock;
+	//private Timer clock;
 
+	public TimeService() {
+	super("timer");
+		// TODO Auto-generated constructor stub
+	}
+	
 	public TimeService(String name) {
 		super(name);
-		clock = new Timer();
+		//clock = new Timer();
 		time = 0;
 		speed = 1000;
 	}
 
 	@Override
 	protected void initialize() {
+		Timer clock = new Timer();
 		clock.schedule(new TimerTask() {
 
 			@Override

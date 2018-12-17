@@ -1,19 +1,16 @@
 package bgu.spl.mics.application.services;
 
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
-import bgu.spl.mics.Event;
 import bgu.spl.mics.Future;
 import bgu.spl.mics.MicroService;
-import bgu.spl.mics.application.messages.CheckAvailabilityEventAndGetPriceEvent;
 import bgu.spl.mics.application.messages.OrderBookEvent;
 import bgu.spl.mics.application.messages.Tick;
-import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.Inventory;
 import bgu.spl.mics.application.passiveObjects.MoneyRegister;
 import bgu.spl.mics.application.passiveObjects.OrderReceipt;
+import bgu.spl.mics.application.passiveObjects.OrderSchedule;
 import bgu.spl.mics.application.passiveObjects.ResourcesHolder;
 
 /**
@@ -34,7 +31,16 @@ public class APIService extends MicroService {
 		this.customer = customer;
 		order = booksTicks;
 
-		// TODO Implement this
+	}
+
+	public APIService(Customer customer, OrderSchedule[] booksTicks) {
+		super("APIService :" + customer.getId());
+		order = new HashMap<>();
+		for (OrderSchedule orderSchedule : booksTicks) {
+			order.put(orderSchedule.getTick(), orderSchedule.getBookTitle());
+		}
+		this.customer = customer;
+
 	}
 
 	@Override
@@ -60,10 +66,11 @@ public class APIService extends MicroService {
 		if (futureObject != null) {
 			OrderReceipt resolved = futureObject.get();
 			if (resolved != null) {
-			//	System.out.println(this.getName() + " processing the event, its result is \"" + resolved + "\" - success");
+				// System.out.println(this.getName() + " processing the event, its result is \""
+				// + resolved + "\" - success");
 				return resolved;
 			} else {
-				//System.out.println(this.getName() + ":cant resolved event");
+				// System.out.println(this.getName() + ":cant resolved event");
 			}
 		} else {
 			System.out.println(

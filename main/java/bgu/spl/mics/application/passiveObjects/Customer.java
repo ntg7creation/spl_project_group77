@@ -17,8 +17,9 @@ public class Customer {
 	private String address;
 	private int distance;
 	private List<OrderReceipt> myorders;
-	private int credit;
-	private int creditNumber;
+	private CreditCard creditCard;
+	private OrderSchedule[] orderSchedule;
+
 
 	public Customer(String name, int id, String address, int distance, int creditstart, int creditnumber) {
 		this.name = name;
@@ -26,8 +27,9 @@ public class Customer {
 		this.address = address;
 		this.distance = distance;
 		myorders = new LinkedList<OrderReceipt>();
-		this.credit = creditstart;
-		this.creditNumber = creditnumber;
+		creditCard = new CreditCard();
+		creditCard.setAmount(creditstart);
+		creditCard.setNumber(creditnumber);
 	}
 
 	/**
@@ -79,13 +81,13 @@ public class Customer {
 	 * @return Amount of money left.
 	 */
 	synchronized public int getAvailableCreditAmount() {
-		return credit;
+		return creditCard.getAmount();
 	}
 
 	synchronized public Boolean removeCredit(int x) {
-		if (credit < x)
+		if (creditCard.getAmount() < x)
 			return false;
-		credit -= x;
+		creditCard.setAmount(creditCard.getAmount() -x);
 		return true;
 	}
 
@@ -93,7 +95,15 @@ public class Customer {
 	 * Retrieves this customers credit card serial number.
 	 */
 	public int getCreditNumber() {
-		return creditNumber;
+		return creditCard.getNumber();
+	}
+
+	public OrderSchedule[] getOrderSchedule() {
+		return orderSchedule;
+	}
+
+	public void setOrderSchedule(OrderSchedule[] orderSchedule) {
+		this.orderSchedule = orderSchedule;
 	}
 
 }
