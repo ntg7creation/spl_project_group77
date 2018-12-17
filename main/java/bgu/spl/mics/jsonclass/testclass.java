@@ -1,4 +1,4 @@
-package jsonclass;
+package bgu.spl.mics.jsonclass;
 
 import java.util.Timer;
 import java.util.TimerTask;

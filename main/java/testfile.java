@@ -15,8 +15,8 @@ import bgu.spl.mics.application.services.InventoryService;
 import bgu.spl.mics.application.services.LogisticsService;
 import bgu.spl.mics.application.services.ResourceService;
 import bgu.spl.mics.application.services.SellingService;
-import jsonclass.Resources;
-import jsonclass.storeObjects;
+import bgu.spl.mics.jsonclass.Resources;
+import bgu.spl.mics.jsonclass.storeObjects;
 
 class testfile {
 

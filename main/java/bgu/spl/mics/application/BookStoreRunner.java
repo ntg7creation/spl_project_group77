@@ -24,8 +24,8 @@ import bgu.spl.mics.application.services.LogisticsService;
 import bgu.spl.mics.application.services.ResourceService;
 import bgu.spl.mics.application.services.SellingService;
 import bgu.spl.mics.application.services.TimeService;
-import jsonclass.Resources;
-import jsonclass.storeObjects;
+import bgu.spl.mics.jsonclass.Resources;
+import bgu.spl.mics.jsonclass.storeObjects;
 
 /**
  * This is the Main class of the application. You should parse the input file,

@@ -1,4 +1,4 @@
-package jsonclass;
+package bgu.spl.mics.jsonclass;
 
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 
