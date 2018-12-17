@@ -24,7 +24,6 @@ public class MessageBusImpl implements MessageBus {
 	}
 
 	private ConcurrentHashMap<Class, ConcurrentLinkedQueue<MicroService>> subscription;
-	private ConcurrentHashMap<MicroService, Object> locks;
 	private ConcurrentHashMap<MicroService, ConcurrentLinkedQueue<Message>> registers;
 	private ConcurrentHashMap<Event, Future> mailBoxs;
 
@@ -38,7 +37,7 @@ public class MessageBusImpl implements MessageBus {
 		registers = new ConcurrentHashMap<>();
 		mailBoxs = new ConcurrentHashMap<>();
 		subscription = new ConcurrentHashMap<>();
-		locks = new ConcurrentHashMap<>();
+		new ConcurrentHashMap<>();
 
 		subscription.put(CheckAvailabilityEventAndGetPriceEvent.class, new ConcurrentLinkedQueue<>());
 		subscription.put(DeliveryEvent.class, new ConcurrentLinkedQueue<>());
@@ -53,8 +52,7 @@ public class MessageBusImpl implements MessageBus {
 
 	@Override
 	public <T> void subscribeEvent(Class<? extends Event<T>> type, MicroService m) {
-			subscription.get(type).add(m);
-
+		subscription.get(type).add(m);
 
 	}
 
@@ -85,7 +83,9 @@ public class MessageBusImpl implements MessageBus {
 		for (MicroService m : waiting) {
 			if (m != null) {
 				if (registers.containsKey(m)) {
-					registers.get(m).add(b);
+					synchronized (registers.get(m)) {
+						registers.get(m).add(b);
+					}
 					// System.out.println("a Broadcast has been added to " + m.getName());
 					synchronized (m) {
 						m.notify();
@@ -100,9 +100,8 @@ public class MessageBusImpl implements MessageBus {
 
 	@Override
 	public <T> Future<T> sendEvent(Event<T> e) {
-		if(e.getClass() == CheckAvailabilityEventAndGetPriceEvent.class)
-		{
-			//System.out.println(e.getClass());
+		if (e.getClass() == CheckAvailabilityEventAndGetPriceEvent.class) {
+			// System.out.println(e.getClass());
 			System.out.println(subscription.get(e.getClass()));
 		}
 		Future<T> newBoxkey = null;
@@ -113,7 +112,10 @@ public class MessageBusImpl implements MessageBus {
 				if (registers.containsKey(m)) {
 					newBoxkey = new Future<T>();
 					mailBoxs.put(e, newBoxkey);
-					registers.get(m).add(e);
+					synchronized (registers.get(m)) {
+						registers.get(m).add(e);
+					}
+
 					// System.out.println("an event has been added to " + m.getName());
 					synchronized (m) {
 						m.notify();
@@ -132,7 +134,6 @@ public class MessageBusImpl implements MessageBus {
 	public void register(MicroService m) {
 		if (!registers.containsKey(m))
 			registers.put(m, new ConcurrentLinkedQueue<Message>());
-		locks.put(m, new Object());
 	}
 
 	@Override
@@ -147,7 +148,6 @@ public class MessageBusImpl implements MessageBus {
 		Unsubscribe(Tick.class, m);
 
 		if (registers.containsKey(m)) {
-			locks.remove(m);
 			while (!registers.get(m).isEmpty()) {
 				Message toSend = registers.get(m).poll();
 				if (toSend.getClass() != Tick.class) {
@@ -177,18 +177,23 @@ public class MessageBusImpl implements MessageBus {
 	@Override
 	public Message awaitMessage(MicroService m) throws InterruptedException {
 		if (registers.containsKey(m)) {
-			synchronized (m) {
-				m.wait();
-			}
+			synchronized (registers.get(m)) {
 
-			ConcurrentLinkedQueue<Message> ToDoList = registers.get(m);
-			Message todoNext = ToDoList.poll();
-			if (todoNext == null) {
-				System.out.println("error: resive null message");
-				m.terminate();
-			}
+				ConcurrentLinkedQueue<Message> ToDoList = registers.get(m);
+				if (ToDoList.isEmpty())
+					// rick here to miss if someone input
+					synchronized (m) {
+						m.wait();
+					}
 
-			return todoNext;
+				Message todoNext = ToDoList.poll();
+				if (todoNext == null) {
+					System.out.println("error: resive null message");
+					m.terminate();
+				}
+
+				return todoNext;
+			}
 		} else {
 			System.out.println(m.getName() + " is not registered");
 			m.terminate();
