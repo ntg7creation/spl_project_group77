@@ -24,7 +24,7 @@ public class MoneyRegister implements Serializable {
 
 	private MoneyRegister() {
 		receipts = Collections.synchronizedList(new ArrayList<OrderReceipt>());
-		countingLock = new Integer("hi");
+		countingLock = new Integer(0);
 	}
 
 	private static class Holder implements Serializable {

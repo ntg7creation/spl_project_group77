@@ -48,6 +48,7 @@ public class TimeService extends MicroService {
 			@Override
 			public void run() {
 				time++;
+				System.out.println(time);
 				if (time < duration)
 					sendBroadcast(new Tick(time));
 				else {

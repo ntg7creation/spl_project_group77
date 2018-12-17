@@ -69,10 +69,12 @@ public class Future_Test {
 	@Test
 	public void testGetLongTimeUnit() {
 
-	String value =	f.get((long) 5, TimeUnit.SECONDS);
-	assertNull(value);
-	assertTimeout(ofSeconds(15),() ->{ f.get((long)10, TimeUnit.SECONDS); });
-	f.resolve("test");
+		String value = f.get((long) 5, TimeUnit.SECONDS);
+		assertNull(value);
+		assertTimeout(ofSeconds(15), () -> {
+			f.get((long) 10, TimeUnit.SECONDS);
+		});
+		f.resolve("test");
 		// value = f.get(timeout, unit);
 	}
 

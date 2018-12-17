@@ -47,7 +47,6 @@ public class MessageBusImpl implements MessageBus {
 		subscription.put(Tick.class, new ConcurrentLinkedQueue<>());
 		subscription.put(ReturnVehicleEvent.class, new ConcurrentLinkedQueue<>());
 
-
 	}
 
 	@Override
@@ -67,13 +66,13 @@ public class MessageBusImpl implements MessageBus {
 	@Override
 	public <T> void complete(Event<T> e, T result) {
 		// System.out.println(mailBoxs);
-	 Future<T> f = mailBoxs.remove(e);
+		Future<T> f = mailBoxs.remove(e);
 		// // System.out.println();//TODO find a better fix
 		// System.out.println(f);
 		// if (f == null)
 		// System.out.println("try to resolve a future that dose not exist");
 		if (f == null)
-			System.out.println(e+"      has lost his future");
+			System.out.println(e + "      has lost his future");
 		f.resolve(result);
 
 	}
@@ -100,24 +99,25 @@ public class MessageBusImpl implements MessageBus {
 	@Override
 	public <T> Future<T> sendEvent(Event<T> e) {
 		Future<T> newBoxkey = null;
-		ConcurrentLinkedQueue<MicroService> waiting = subscription.get(e.getClass());
-		MicroService m = waiting.poll();
-		if (m != null) {
-			if (registers.containsKey(m)) {
-				newBoxkey = new Future<T>();
-				mailBoxs.put(e, newBoxkey);
-				registers.get(m).add(e);
-				// System.out.println("an event has been added to " + m.getName());
-				synchronized (m) {
-					m.notify();
+		synchronized (subscription.get(e.getClass())) {
+			ConcurrentLinkedQueue<MicroService> waiting = subscription.get(e.getClass());
+			MicroService m = waiting.poll();
+			if (m != null) {
+				if (registers.containsKey(m)) {
+					newBoxkey = new Future<T>();
+					mailBoxs.put(e, newBoxkey);
+					registers.get(m).add(e);
+					// System.out.println("an event has been added to " + m.getName());
+					synchronized (m) {
+						m.notify();
+					}
+					waiting.add(m);
+				} else {
+					System.out.println("ERROR!!!! the waiting micro server dose not exsist");
 				}
-				waiting.add(m);
-			} else {
-				System.out.println("ERROR!!!! the waiting micro server dose not exsist");
+
 			}
-
 		}
-
 		return newBoxkey;
 	}
 
@@ -171,12 +171,9 @@ public class MessageBusImpl implements MessageBus {
 	public Message awaitMessage(MicroService m) throws InterruptedException {
 		if (registers.containsKey(m)) {
 			synchronized (m) {
-				// System.out.println(m.getName() + " went to sleep");
-				// System.out.println();
 				m.wait();
 			}
-			// locks.get(m).lockme();
-			// System.out.println(m.getName() + " just woke up and is starting to work");
+
 			ConcurrentLinkedQueue<Message> ToDoList = registers.get(m);
 			Message todoNext = ToDoList.poll();
 			if (todoNext == null) {

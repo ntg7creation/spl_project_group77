@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.After;
 import org.junit.Test;
 
+import bgu.spl.mics.staticFunctions;
 import bgu.spl.mics.application.passiveObjects.BookInventoryInfo;
 import bgu.spl.mics.application.passiveObjects.Inventory;
 
@@ -71,9 +72,6 @@ public class InventoryTest {
 		assertTrue(i.checkAvailabiltyAndGetPrice("none exist")== -1);
 	}
 
-	@Test
-	public void testPrintInventoryToFile() {
-		fail("Not yet implemented");
-	}
+
 
 }
