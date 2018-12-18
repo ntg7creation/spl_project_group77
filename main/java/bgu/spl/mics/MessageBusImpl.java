@@ -2,6 +2,7 @@ package bgu.spl.mics;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.TimeUnit;
 
 import bgu.spl.mics.application.messages.CheckAvailabilityEventAndGetPriceEvent;
 import bgu.spl.mics.application.messages.DeliveryEvent;
@@ -23,6 +24,8 @@ public class MessageBusImpl implements MessageBus {
 		private static final MessageBus INSTANCE = new MessageBusImpl();
 	}
 
+	private int tercount=0;
+	private Boolean TerminateMode;
 	private ConcurrentHashMap<Class, ConcurrentLinkedQueue<MicroService>> subscription;
 	private ConcurrentHashMap<MicroService, ConcurrentLinkedQueue<Message>> registers;
 	private ConcurrentHashMap<Event, Future> mailBoxs;
@@ -34,6 +37,7 @@ public class MessageBusImpl implements MessageBus {
 
 	private MessageBusImpl() {
 
+		TerminateMode = false;
 		registers = new ConcurrentHashMap<>();
 		mailBoxs = new ConcurrentHashMap<>();
 		subscription = new ConcurrentHashMap<>();
@@ -79,22 +83,56 @@ public class MessageBusImpl implements MessageBus {
 
 	@Override
 	public void sendBroadcast(Broadcast b) {
+
+		if (b.getClass() == Terminate.class) {
+			try {
+				synchronized (this) {
+					this.wait(500,1);
+				}
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("starting terminate");
+			TerminateMode = true;
+		}
+
 		ConcurrentLinkedQueue<MicroService> waiting = subscription.get(b.getClass());
 		for (MicroService m : waiting) {
 			if (m != null) {
 				if (registers.containsKey(m)) {
 					synchronized (registers.get(m)) {
+						if (b.getClass() == Terminate.class) {
+							System.out.println(m.getName() + "send terminate");
+							while(!registers.get(m).isEmpty())
+							{
+								Message endM= registers.get(m).poll();
+								mailBoxs.get(endM).resolve(null);
+							}
+							registers.get(m).clear();
+						}
+
+
 						registers.get(m).add(b);
+
 					}
-					// System.out.println("a Broadcast has been added to " + m.getName());
-					synchronized (m) {
-						m.notify();
-					}
+						// System.out.println("a Broadcast has been added to " + m.getName());
+							synchronized (m) {
+								
+								m.notify();
+							}
+					
 				} else {
 					System.out.println("error the waiting micro server dose not exsist");
 				}
 
-			}
+			} else
+				System.out.println("null micro");
+		}
+		if (b.getClass() == Terminate.class) {
+			System.out.println("end terminate");
+			System.out.println(tercount);
 		}
 	}
 
@@ -106,6 +144,7 @@ public class MessageBusImpl implements MessageBus {
 		}
 		Future<T> newBoxkey = null;
 		synchronized (subscription.get(e.getClass())) {
+
 			ConcurrentLinkedQueue<MicroService> waiting = subscription.get(e.getClass());
 			MicroService m = waiting.poll();
 			if (m != null) {
@@ -139,6 +178,7 @@ public class MessageBusImpl implements MessageBus {
 	@Override
 	public void unregister(MicroService m) {
 
+		tercount++;
 		Unsubscribe(CheckAvailabilityEventAndGetPriceEvent.class, m);
 		Unsubscribe(DeliveryEvent.class, m);
 		Unsubscribe(GetBookEvent.class, m);
@@ -147,53 +187,64 @@ public class MessageBusImpl implements MessageBus {
 		Unsubscribe(ReturnVehicleEvent.class, m);
 		Unsubscribe(Tick.class, m);
 
+
+		
 		if (registers.containsKey(m)) {
 			while (!registers.get(m).isEmpty()) {
-				Message toSend = registers.get(m).poll();
-				if (toSend.getClass() != Tick.class) {
-					ConcurrentLinkedQueue<MicroService> waiting = subscription.get(toSend.getClass());
-					MicroService micro = waiting.poll();
-					if (micro != null) {
-						if (registers.containsKey(micro)) {
-							registers.get(micro).add(toSend);
-							// System.out.println("an event has been added to " + micro.getName());
-							micro.notify();
-							waiting.add(micro);
-						} else {
-							System.out.println("error the waiting micro server dose not exist");
-						}
-
-					}
+				// Message toSend = registers.get(m).poll();
+				// if (toSend.getClass() != Tick.class) {
+				// ConcurrentLinkedQueue<MicroService> waiting =
+				// subscription.get(toSend.getClass());
+				// MicroService micro = waiting.poll();
+				// if (micro != null) {
+				// if (registers.containsKey(micro)) {
+				// registers.get(micro).add(toSend);
+				// // System.out.println("an event has been added to " + micro.getName());
+				// micro.notify();
+				// waiting.add(micro);
+				// } else {
+				// System.out.println("error the waiting micro server dose not exist");
+				// }
+				//
+				// }
+				// }
+				synchronized (m) {
+					m.notify();
 				}
+
 			}
 		}
 		registers.remove(m.getName(), m);
 	}
 
 	private void Unsubscribe(Class type, MicroService micro) {
-		subscription.get(type).remove(micro);
+		synchronized (subscription.get(type)) {
+			subscription.get(type).remove(micro);
+		}
+
 	}
 
 	@Override
 	public Message awaitMessage(MicroService m) throws InterruptedException {
 		if (registers.containsKey(m)) {
-			synchronized (registers.get(m)) {
+			// synchronized (registers.get(m)) {
 
-				ConcurrentLinkedQueue<Message> ToDoList = registers.get(m);
-				if (ToDoList.isEmpty())
-					// rick here to miss if someone input
-					synchronized (m) {
-						m.wait();
-					}
+			ConcurrentLinkedQueue<Message> ToDoList = registers.get(m);
+			if (ToDoList.isEmpty())
+				// rick here to miss if someone input
+				synchronized (m) {
+					m.wait();
 
-				Message todoNext = ToDoList.poll();
-				if (todoNext == null) {
-					System.out.println("error: resive null message");
-					m.terminate();
 				}
 
-				return todoNext;
+			Message todoNext = ToDoList.poll();
+			if (todoNext == null) {
+				System.out.println("error: resive null message");
+				m.terminate();
 			}
+
+			return todoNext;
+			// }
 		} else {
 			System.out.println(m.getName() + " is not registered");
 			m.terminate();

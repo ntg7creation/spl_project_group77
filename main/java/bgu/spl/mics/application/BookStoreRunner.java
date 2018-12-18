@@ -11,8 +11,6 @@ import java.util.concurrent.Executors;
 
 import com.google.gson.Gson;
 
-import bgu.spl.mics.MessageBus;
-import bgu.spl.mics.MessageBusImpl;
 import bgu.spl.mics.staticFunctions;
 import bgu.spl.mics.application.passiveObjects.Customer;
 import bgu.spl.mics.application.passiveObjects.Inventory;

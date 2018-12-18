@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import bgu.spl.mics.application.messages.Terminate;
 import bgu.spl.mics.application.messages.Tick;
+import bgu.spl.mics.application.services.TimeService;
 
 /**
  * The MicroService is an abstract class that any micro-service in the system
@@ -152,7 +153,9 @@ public abstract class MicroService implements Runnable {
 	 * message.
 	 */
 	protected final void terminate() {
-		System.out.println(this.getName() + "terminated" );
+		System.out.println(this.getName() + " terminated");
+		if(this.getClass() == TimeService.class)
+			System.out.println("hi im");
 		this.terminated = true;
 		bus.unregister(this);
 	}
@@ -171,21 +174,23 @@ public abstract class MicroService implements Runnable {
 	 */
 	@Override
 	public final void run() {
-		
-		subscribeBroadcast(Terminate.class, broad ->{
-			this.terminate();
-		});
-		
+		if (this.getClass() != TimeService.class)
+			subscribeBroadcast(Terminate.class, broad -> {
+				this.terminate();
+			});
+
 		initialize();
 		bus.register(this);
 		while (!terminated) {
 			try {
+				if(this.getClass() == TimeService.class)
+					System.out.println("timer erro");
 				Message whatToDo = bus.awaitMessage(this);
 				if (whatToDo != null)
 					myCallbacks.get(whatToDo.getClass()).call(whatToDo);
 			} catch (InterruptedException e) {
 				this.terminate();
-				//e.printStackTrace();
+				// e.printStackTrace();
 			}
 
 		}

@@ -21,12 +21,7 @@
 			[
 				{
 					"license": 123483,
-					"speed": 2
-				},
-
-				{
-					"license": 999994,
-					"speed": 4
+					"speed": 400
 				}
 			]
 		}
@@ -37,24 +32,24 @@
 		"time": 
 		{
 			"speed": 1000,
-			"duration": 24
+			"duration": 14
 		},
 
 		"selling": 6,
 		"inventoryService": 3,
 		"logistics": 4,
-		"resourcesService": 2,
+		"resourcesService": 1,
 		"customers": 
 		[
 			{
 				"id": 123456789,
-				"name": "Bruria",
-				"address": "NewYork 123",
+				"name": "yuval",
+				"address": "ness-ziona 123",
 				"distance": 33,
 				"creditCard": 
 				{
 					"number": 67890,
-					"amount": 88
+					"amount": 1000000
 				},
 
 				"orderSchedule": 
@@ -79,7 +74,7 @@
 				"creditCard": 
 				{
 					"number": 453536,
-					"amount": 220
+					"amount": 1000000
 				},
 
 				"orderSchedule": 

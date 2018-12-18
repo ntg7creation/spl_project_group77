@@ -26,7 +26,7 @@ public class TimeService extends MicroService {
 	private int speed;
 	private int duration;
 	private int time;
-	// private Timer clock;
+	//private Timer clock;
 
 	public TimeService() {
 		super("timer");
@@ -58,5 +58,6 @@ public class TimeService extends MicroService {
 			}
 		}, 0, speed);
 
+		terminate();
 	}
 }
